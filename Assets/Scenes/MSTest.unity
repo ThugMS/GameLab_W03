@@ -713,7 +713,7 @@ PrefabInstance:
       objectReference: {fileID: -944628639613478452, guid: 10e0b6a758b4d964d80e205bd29a8e4c, type: 3}
     - target: {fileID: 5219130115023891852, guid: af647ca60c3f21a42baa6ad1d754ca9d, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5219130115023891852, guid: af647ca60c3f21a42baa6ad1d754ca9d, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionId
@@ -725,7 +725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5219130115023891852, guid: af647ca60c3f21a42baa6ad1d754ca9d, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_ActionId
-      value: b01c74c5-f581-4abb-9362-368bedd23689
+      value: 2ba876fe-6f71-4d0c-b164-58bb49edbacb
       objectReference: {fileID: 0}
     - target: {fileID: 5219130115023891852, guid: af647ca60c3f21a42baa6ad1d754ca9d, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionName
@@ -737,7 +737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5219130115023891852, guid: af647ca60c3f21a42baa6ad1d754ca9d, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_ActionName
-      value: Player/Grab[/Keyboard/f,/XInputControllerWindows/buttonEast]
+      value: Player/Interact[/Keyboard/f,/XInputControllerWindows/buttonEast]
       objectReference: {fileID: 0}
     - target: {fileID: 5219130115023891852, guid: af647ca60c3f21a42baa6ad1d754ca9d, type: 3}
       propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.size
