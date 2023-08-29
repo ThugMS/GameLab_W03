@@ -36,7 +36,7 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    private void Start()
     {
         TimeManager.s_Instance.GetObjects(levelObjects);
     }

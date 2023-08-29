@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : TimeInfluenced
+public class SizeChangeByTime : TimeInfluenced
 {
     #region PublicVariables
     #endregion
@@ -16,7 +16,7 @@ public class Tree : TimeInfluenced
     #region PublicMethod
     public override void UpdateTimeState()
     {
-        ResetModels();
+        DisableModels();
         if (m_objectTime <= 0)
             EnableSprout();
         else if (m_objectTime == 1)
@@ -28,9 +28,12 @@ public class Tree : TimeInfluenced
     public void EnableSprout() => m_sprout.SetActive(true);
     public void EnableTree() => m_tree.SetActive(true);
     public void EnableElderTree() => m_elderTree.SetActive(true);
+    // 베는 애니메이션 넣기
+    public void Chop() => DisableModels();
+
     #endregion
     #region PrivateMethod
-    private void ResetModels()
+    private void DisableModels()
     {
         m_sprout.SetActive(false);
         m_tree.SetActive(false);
