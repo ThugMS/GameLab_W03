@@ -9,24 +9,24 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     #region PublicVariables
+    public int m_time = 1;
     #endregion
 
     #region PrivateVariables
-    
-
     [Header("Camera Rotate")]
-    [SerializeField] private GameObject m_followTransform;
-    [SerializeField] private Vector3 m_look = Vector3.zero;
-    [SerializeField] private float m_rotationPower = 3f;
-    [SerializeField] private bool m_isGamepad = false;
-    [SerializeField] private bool m_isMouse = false;
+    [SerializeField] protected GameObject m_followTransform;
+    [SerializeField] protected Vector2 m_look = Vector2.zero;
+    [SerializeField] protected float m_rotationPower = 3f;
+    [SerializeField] protected bool m_isGamepad = false;
+    [SerializeField] protected bool m_isMouse = false;
 
     [Header("Move")]
-    [SerializeField] private Vector3 m_Direction = Vector3.zero;
-    [SerializeField] private Quaternion m_nextRotation = Quaternion.identity;
-    [SerializeField] private float m_rotationLerp = 0.8f;
-    [SerializeField] private Rigidbody m_rigidbody;
-    [SerializeField] private float m_speed = 5f;
+    [SerializeField] protected Vector3 m_Direction = Vector3.zero;
+    [SerializeField] protected Quaternion m_nextRotation = Quaternion.identity;
+    [SerializeField] protected float m_rotationLerp = 0.8f;
+    [SerializeField] protected Rigidbody m_rigidbody;
+    [SerializeField] protected float m_speed = 5f;
+    [SerializeField] protected bool m_isMove = false;
     #endregion
 
     #region PublicMethod
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
         Vector2 input = _context.ReadValue<Vector2>();
 
         m_Direction = new Vector3(input.x, 0f, input.y);
+        m_isMove = true;
     }
 
     public void OnLook(InputAction.CallbackContext _context)
@@ -48,10 +49,18 @@ public class Player : MonoBehaviour
 
         if (m_isMouse == true)
         {
-            m_rotationPower = 0.1f;
+            m_rotationPower = 1f;
         }
 
         m_look = _context.ReadValue<Vector2>();
+    }
+
+    private void Update()
+    {
+        if(m_Direction == Vector3.zero)
+        {
+            m_isMove = false;
+        }
     }
 
     private void FixedUpdate()
@@ -80,30 +89,39 @@ public class Player : MonoBehaviour
         #endregion
 
         #region Move
-        m_nextRotation = Quaternion.Lerp(m_followTransform.transform.rotation, m_nextRotation, m_rotationLerp);
 
-        if (m_Direction != Vector3.zero)
+        if(m_isMove == true)
         {
-            m_nextRotation = Quaternion.Euler(new Vector3(0, m_nextRotation.eulerAngles.y, 0));
+                m_nextRotation = Quaternion.Euler(new Vector3(0, m_nextRotation.eulerAngles.y, 0));
 
-            Vector2 movedirection = new Vector2(m_Direction.x, m_Direction.z);
-            Vector2 a = new Vector2(0, 1f);
-            float angle = Vector2.Angle(a, movedirection);
-            if (movedirection.x < 0)
-            {
-                angle *= -1f;
-            }
+                Vector2 movedirection = new Vector2(m_Direction.x, m_Direction.z);
+                Vector2 a = new Vector2(0, 1f);
+                float angle = Vector2.Angle(a, movedirection);
+                if (movedirection.x < 0)
+                {
+                    angle *= -1f;
+                }
 
-            transform.rotation = Quaternion.Lerp(Quaternion.Euler(0, m_nextRotation.eulerAngles.y + angle, 0), transform.rotation, m_rotationLerp);
+                transform.rotation = Quaternion.Lerp(Quaternion.Euler(0, m_nextRotation.eulerAngles.y + angle, 0), transform.rotation, m_rotationLerp);
 
-            Move();
+                Move();   
         }
         else
         {
             m_rigidbody.angularVelocity = new Vector3(0, 0, 0);
             m_rigidbody.velocity = Vector3.zero;
         }
+        m_nextRotation = Quaternion.Lerp(m_followTransform.transform.rotation, m_nextRotation, m_rotationLerp);
+
+        
         #endregion
+    }
+
+    protected virtual void Move()
+    {
+        Vector3 moveAmout = transform.forward * m_speed * Time.deltaTime;
+        Vector3 nextPosition = m_rigidbody.position + moveAmout;
+        m_rigidbody.MovePosition(nextPosition);
     }
     #endregion
 
@@ -123,11 +141,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Move()
-    {
-        Vector3 moveAmout = m_Direction * m_speed * Time.deltaTime;
-        Vector3 nextPosition = m_rigidbody.position + moveAmout;
-        m_rigidbody.MovePosition(nextPosition);
-    }
+    
     #endregion
 }
