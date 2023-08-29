@@ -40,7 +40,7 @@
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Game",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -150,7 +150,7 @@
                     "path": "<Pointer>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
