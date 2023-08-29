@@ -19,7 +19,7 @@ public class Youth : Player
     #endregion
 
     #region PublicMethod
-    public void Grab(InputAction.CallbackContext _context)
+    public void Interact(InputAction.CallbackContext _context)
     {
         CheckGrab();
     }
@@ -27,8 +27,8 @@ public class Youth : Player
 
     #region PrivateMethod
     public void CheckGrab()
-    {
-        m_collider = Physics.OverlapBox(m_boxPosition, m_boxSize * 0.5f, transform.rotation, 1 << LayerMask.NameToLayer("Axe"));
+    {   //,  LayerMask.NameToLayer("Axe")
+        m_collider = Physics.OverlapBox(m_boxPosition, m_boxSize * 0.5f, transform.rotation);
     }
 
     private void OnDrawGizmos()
