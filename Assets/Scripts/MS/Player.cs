@@ -34,8 +34,6 @@ public class Player : MonoBehaviour
     {
         Vector2 input = _context.ReadValue<Vector2>();
 
-        Debug.Log("yes");
-
         m_Direction = new Vector3(input.x, 0f, input.y);
         m_isMove = true;
     }
