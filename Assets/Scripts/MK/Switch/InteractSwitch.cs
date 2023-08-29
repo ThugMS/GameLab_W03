@@ -17,21 +17,17 @@ public class InteractSwitch : MonoBehaviour
     {
         if ( m_canClick && Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("F");
             m_switch.GetComponent<Switch>().TurnSwitch(true);
-            
         }
     }
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Switch"))
         {
-            Debug.Log("in");
             m_switch = collision.gameObject;
             m_canClick = true;
         }
     }
-
     private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.CompareTag("Switch"))
@@ -40,6 +36,5 @@ public class InteractSwitch : MonoBehaviour
             m_canClick = false;
         }
     }
-
     #endregion
 }
