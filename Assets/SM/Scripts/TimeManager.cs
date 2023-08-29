@@ -16,9 +16,9 @@ public class TimeManager : MonoBehaviour
             return s_instance;
         }
     }
+    public int m_timeCount;
     #endregion
     #region PrivateVariables
-    [SerializeField] private int m_timeCount;
 
     private static TimeManager s_instance;
 
