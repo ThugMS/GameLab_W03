@@ -35,7 +35,7 @@ public class PlayerControlTime : MonoBehaviour
 	}
 
 
-	#endregion
-	#region PrivateMethod
-	#endregion
+    #endregion
+    #region PrivateMethod
+    #endregion
 }
