@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1136368089901298081}
   - component: {fileID: 1136368089901298082}
   m_Layer: 0
-  m_Name: DebugTree
+  m_Name: DebugIce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_treeTransform: {fileID: 1136368090714265289}
-  m_youngYPosition: -1
+  m_youngYPosition: 1
   m_youthYPosition: 0
-  m_elderYPosition: 1
+  m_elderYPosition: -0.99
   m_startTime: 1
   m_timeScale: 2
 --- !u!1 &1136368090714265285
@@ -114,7 +114,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6e276a008bce31e478470f3d3c4e9e9c, type: 2}
+  - {fileID: 2100000, guid: 13115c36b87a52b499b7c96f9116c060, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
