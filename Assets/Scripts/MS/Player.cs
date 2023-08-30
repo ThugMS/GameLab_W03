@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 
     #region PrivateVariables
     [SerializeField] protected bool m_isGround = false;
+    [SerializeField] protected bool m_isCeiling = false;
+    [SerializeField] protected bool m_isStucking = false;
 
     [Header("Camera Rotate")]
     [SerializeField] protected GameObject m_followTransform;
@@ -87,8 +89,10 @@ public class Player : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        CeilingCheck();
         FallingCheck();
         CheckGround();
+        CheckHead();
 
         #region Camera
         {
@@ -190,6 +194,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void CeilingCheck()
+    {
+        if(m_isCeiling && m_isGround)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
     private void FallingCheck()
     {
         if (!m_isGround && m_rigidbody.velocity.y < 0)
@@ -225,5 +237,20 @@ public class Player : MonoBehaviour
             yield return null;
         }
     }
+
+    private void CheckHead()
+    {
+        Ray ray = new Ray(transform.position, Vector3.up);
+        if (Physics.Raycast(ray, 1.1f))
+        {
+            m_isCeiling = true;
+        }
+        else
+        {
+            m_isCeiling = false;
+        }
+    }
+
+
     #endregion
 }
