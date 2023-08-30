@@ -65,6 +65,7 @@ public class TreeChangeByTime : TimeInfluenced
     private void OnEnable()
     {
         SetStartTime(m_startTime);
+        UpdateTimeState();
     }
     #endregion
 }
