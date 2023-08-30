@@ -11,13 +11,15 @@ public class Tree : MonoBehaviour
 	#endregion
 	#region PublicMethod
 
-	public void Chop()
+	public bool Chop()
 	{
 		if (time.m_objectTime == 1)
 		{
 			transform.parent.gameObject.SetActive(false);
 			//chop
+			return true;
 		}
+		return false;
 	}
 
     #endregion
