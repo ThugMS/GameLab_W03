@@ -127,7 +127,7 @@ public class Senior : Player
 
     private void ReturnKey()
     {
-        Instantiate(m_keyPrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+        Instantiate(m_keyPrefab, transform.position + transform.forward, Quaternion.identity);
         m_grabItem = ITEM.None;
     }
 
