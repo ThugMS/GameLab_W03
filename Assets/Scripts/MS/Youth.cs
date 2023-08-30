@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public enum ITEM
 {
@@ -16,7 +16,7 @@ public class Youth : Player
 
     #region PrivateVariables
     [Header("Jump")]
-    [SerializeField] private bool m_isGround = false;
+    //[SerializeField] private bool m_isGround = false;
     [SerializeField] private float m_jumpPower = 1f;
     [SerializeField] private float m_gravityValue = 10f;
 
@@ -35,18 +35,24 @@ public class Youth : Player
 
 
     [Header("Key")]
-    [SerializeField] private GameObject m_key;
+    [SerializeField] public GameObject m_key;
     [SerializeField] private GameObject m_keyPrefab;
     [SerializeField] private Door m_targetDoor;
+
+
+    [Header("Animation")]
+    [SerializeField] private Animator m_animator;
     #endregion
 
     #region PublicMethod
     protected override void FixedUpdate()
     {   
         base.FixedUpdate();
-        CheckGround();
         ApplyGravity();
     }
+
+    
+
 
     private void OnEnable()
     {
@@ -107,6 +113,7 @@ public class Youth : Player
                 if (m_collider[i].tag == "Switch")
                 {
                     m_collider[i].GetComponent<Switch>().TurnSwitch();
+                    break;
                 }
 
                 if (m_collider[i].gameObject.layer == LayerMask.NameToLayer("Axe"))
@@ -114,6 +121,7 @@ public class Youth : Player
                     Destroy(m_collider[i].gameObject);
                     m_axe.SetActive(true);
                     m_grabItem = ITEM.Axe;
+                    break;
                 }
 
                 if (m_collider[i].gameObject.layer == LayerMask.NameToLayer("Key"))
@@ -121,6 +129,7 @@ public class Youth : Player
                     m_collider[i].gameObject.SetActive(false);
                     m_key.SetActive(true);
                     m_grabItem = ITEM.Key;
+                    break;
                 }
             }
         }
@@ -153,21 +162,7 @@ public class Youth : Player
         Gizmos.DrawWireCube(m_boxPosition, m_boxSize);
     }
 
-    private void CheckGround()
-    {
-        Ray ray = new Ray(transform.position, Vector3.down);
-        //1 << LayerMask.NameToLayer("Ground")
-        if (Physics.Raycast(ray, 1.1f))
-        {
-            m_isGround = true;
-            m_isJump = false;
-        }
-        else
-        {
-            m_isGround = false;
-            m_isJump = true;
-        }
-    }
+
 
     private void Jump()
     {
@@ -194,6 +189,7 @@ public class Youth : Player
         {
             m_collider[0].TryGetComponent(out m_targetTree);
             m_targetTree.Chop();
+            m_animator.SetTrigger("AxeTrigger");
         }
         else 
         {
@@ -210,12 +206,7 @@ public class Youth : Player
 
         if (m_collider.Length != 0)
         {
-            Debug.Log("door open");
-            m_collider[0].TryGetComponent(out m_targetDoor);
-            m_targetDoor.InteractStart();
-            m_key.SetActive(false);
-
-            m_grabItem = ITEM.None;
+            m_animator.SetTrigger("KeyTrigger");
         }
         else
         {
@@ -225,15 +216,24 @@ public class Youth : Player
 
     }
 
+    public void OpenDoor()
+    {
+        m_collider[0].TryGetComponent(out m_targetDoor);
+        m_key.SetActive(false);
+        m_targetDoor.InteractStart();
+        m_grabItem = ITEM.None;
+    }
+
     private void ReturnKey()
     {
-        Instantiate(m_keyPrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+        
+        Instantiate(m_keyPrefab, transform.position + transform.forward, Quaternion.identity);
         m_grabItem = ITEM.None;
     }
 
     private void ReturnAxe()
     {
-        Instantiate(m_axePrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+        Instantiate(m_axePrefab, transform.position + transform.forward, Quaternion.identity);
         m_grabItem = ITEM.None;
     }
 

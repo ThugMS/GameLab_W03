@@ -3113,6 +3113,14 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1799620982149906198, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930498519285365596, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2185390754224553219, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
       propertyPath: m_jumpPower
       value: 5
@@ -3128,6 +3136,10 @@ PrefabInstance:
     - target: {fileID: 2446537418030046106, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732425860673358998, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3791650346258343625, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
       propertyPath: m_Name
@@ -3177,9 +3189,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8176781678789827836, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820962927725530506, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 713512667545189474, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
     - {fileID: 6226008946234834302, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
+    - {fileID: 8176781678789827836, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
 --- !u!1 &1658014516 stripped
 GameObject:
