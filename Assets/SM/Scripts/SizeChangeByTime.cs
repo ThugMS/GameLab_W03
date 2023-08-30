@@ -7,16 +7,22 @@ public class SizeChangeByTime : TimeInfluenced
     #region PublicVariables
     #endregion
     #region PrivateVariables
-    [SerializeField] private GameObject m_young;
-    [SerializeField] private GameObject m_youth;
-    [SerializeField] private GameObject m_elder;
+    [Header("Tree Transform")]
+    [SerializeField] private Transform m_treeTransform;
 
+    [Header("Y Position by time")]
+    [SerializeField] private float m_youngYPosition = -1f;
+    [SerializeField] private float m_youthYPosition = 0f;
+    [SerializeField] private float m_elderYPosition = 1f;
+
+    [Header("Time")]
     [SerializeField] private int m_startTime;
+    [SerializeField] private float m_timeScale = 2f;
     #endregion
     #region PublicMethod
     public override void UpdateTimeState()
     {
-        DisableModels();
+        StopAllCoroutines();
         if (m_objectTime <= 0)
             EnableYoung();
         else if (m_objectTime == 1)
@@ -25,17 +31,20 @@ public class SizeChangeByTime : TimeInfluenced
             EnableElder();
     }
 
-    public void EnableYoung() => m_young.SetActive(true);
-    public void EnableYouth() => m_youth.SetActive(true);
-    public void EnableElder() => m_elder.SetActive(true);
+    public void EnableYoung() => StartCoroutine("IE_MoveCoroutine", m_youngYPosition);
+    public void EnableYouth() => StartCoroutine("IE_MoveCoroutine", m_youthYPosition);
+    public void EnableElder() => StartCoroutine("IE_MoveCoroutine", m_elderYPosition);
 
     #endregion
     #region PrivateMethod
-    private void DisableModels()
+    // 코루틴 추가
+    IEnumerator IE_MoveCoroutine(float _yPosition)
     {
-        m_young.SetActive(false);
-        m_youth.SetActive(false);
-        m_elder.SetActive(false);
+        while (Time.fixedDeltaTime * m_timeScale <= 1f)
+        {
+            m_treeTransform.localPosition = Vector3.Lerp(m_treeTransform.localPosition, new Vector3(m_treeTransform.localPosition.x, _yPosition, m_treeTransform.localPosition.z), Time.fixedDeltaTime * m_timeScale);
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     private void OnEnable()
