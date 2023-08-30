@@ -31,9 +31,10 @@ public class IceChangeByTime : TimeInfluenced
     #region PrivateMethod
     private void EnableYoung()
     {
-        m_bodyTransform.DOLocalMove(new Vector3(0f, -4.7f, 0f), TimeManager.s_Instance.m_skipTimeLength);
-        m_bodyTransform.DOScaleY(1f, TimeManager.s_Instance.m_skipTimeLength);
-        m_collisionTransform.DOLocalMoveY(-10f, TimeManager.s_Instance.m_skipTimeLength);
+
+        m_bodyTransform.DOLocalMove(new Vector3(0f, 0.5f, 0f), TimeManager.s_Instance.m_skipTimeLength);
+        m_bodyTransform.DOScaleY(10f, TimeManager.s_Instance.m_skipTimeLength);
+        m_collisionTransform.DOLocalMoveY(0f, TimeManager.s_Instance.m_skipTimeLength);
     }
     private void EnableYouth()
     {
@@ -43,9 +44,10 @@ public class IceChangeByTime : TimeInfluenced
     }
     private void EnableElder()
     {
-        m_bodyTransform.DOLocalMove(new Vector3(0f, 0.5f, 0f), TimeManager.s_Instance.m_skipTimeLength);
-        m_bodyTransform.DOScaleY(10f, TimeManager.s_Instance.m_skipTimeLength);
-        m_collisionTransform.DOLocalMoveY(0f, TimeManager.s_Instance.m_skipTimeLength);
+
+        m_bodyTransform.DOLocalMove(new Vector3(0f, -4.7f, 0f), TimeManager.s_Instance.m_skipTimeLength);
+        m_bodyTransform.DOScaleY(1f, TimeManager.s_Instance.m_skipTimeLength);
+        m_collisionTransform.DOLocalMoveY(-10f, TimeManager.s_Instance.m_skipTimeLength);
     }
 
     private void Start()
