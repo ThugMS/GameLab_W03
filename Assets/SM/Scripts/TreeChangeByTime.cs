@@ -62,7 +62,7 @@ public class TreeChangeByTime : TimeInfluenced
         m_collisionTransform.DOLocalMove(new Vector3(0f, 4.5f, 0f), TimeManager.s_Instance.m_skipTimeLength);
     }
 
-    private void OnEnable()
+    private void Start()
     {
         SetStartTime(m_startTime);
         UpdateTimeState();
