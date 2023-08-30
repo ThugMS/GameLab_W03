@@ -20,13 +20,13 @@ public class Senior : Player
     [SerializeField] private Vector3 m_boxPosition = new Vector3(0, 0, 1f);
     [SerializeField] private Vector3 m_boxSize = new Vector3(1.5f, 2, 1.5f);
 
-    
+    [Header("Animation")]
+    [SerializeField] private Animator m_animator;
     #endregion
 
     #region PublicMethod
     private void OnEnable()
     {
-        m_speed = 3.0f;
         if (m_grabItem == ITEM.Key)
         {
             m_key.SetActive(true);
@@ -107,8 +107,8 @@ public class Senior : Player
         m_collider = CheckCollider("Door");
 
         if (m_collider.Length != 0)
-        {
-            Debug.Log("door open");
+        {   
+            m_animator.SetTrigger("KeyTrigger");
             m_collider[0].TryGetComponent(out m_targetDoor);
             m_targetDoor.InteractStart();
             m_key.SetActive(false);
