@@ -54,11 +54,14 @@ public class Youth : Player
         {
             m_key.SetActive(true);
         }
+
+        m_isUp = false;
     }
 
     private void OnDisable()
     {
         ResetSetting();
+        m_isUp = false;
     }
 
     public void OnJump(InputAction.CallbackContext _context)
@@ -115,7 +118,7 @@ public class Youth : Player
 
                 if (m_collider[i].gameObject.layer == LayerMask.NameToLayer("Key"))
                 {
-                    Destroy(m_collider[i].gameObject);
+                    m_collider[i].gameObject.SetActive(false);
                     m_key.SetActive(true);
                     m_grabItem = ITEM.Key;
                 }
@@ -211,6 +214,8 @@ public class Youth : Player
             m_collider[0].TryGetComponent(out m_targetDoor);
             m_targetDoor.InteractStart();
             m_key.SetActive(false);
+
+            m_grabItem = ITEM.None;
         }
         else
         {
@@ -247,14 +252,14 @@ public class Youth : Player
         }
         else
         {
+            Debug.Log("yes");
             if (m_grabItem == ITEM.Key)
             {
                 m_key.SetActive(false);
+                m_grabItem = ITEM.None;
                 ReturnKey();
             }
         }
-
-
     }
     #endregion
 }
