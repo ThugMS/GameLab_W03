@@ -94,6 +94,7 @@ public class PlayerManager : MonoBehaviour
         _script.enabled = false;
     }
 
+
     private void OffSetting<T>(GameObject _obj, T _script, bool _isUp) where T : Player
     {
 
@@ -104,7 +105,7 @@ public class PlayerManager : MonoBehaviour
         _script.m_isUp = _isUp;
         _obj.SetActive(false);
         _script.enabled = false;
-        
+
     }
     #endregion
 }
