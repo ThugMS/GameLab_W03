@@ -54,6 +54,8 @@ public class Youth : Player
         {
             m_key.SetActive(true);
         }
+
+        m_isUp = false;
     }
 
     private void OnDisable()
@@ -250,14 +252,14 @@ public class Youth : Player
         }
         else
         {
+            Debug.Log("yes");
             if (m_grabItem == ITEM.Key)
             {
                 m_key.SetActive(false);
+                m_grabItem = ITEM.None;
                 ReturnKey();
             }
         }
-
-
     }
     #endregion
 }
