@@ -34,7 +34,13 @@ public class Youth : Player
     [SerializeField] private GameObject m_axe;
     [SerializeField] private GameObject m_axePrefab;
 
+
     private Tree m_targetTree;
+
+    [Header("Key")]
+    [SerializeField] private GameObject m_key;
+    [SerializeField] private GameObject m_keyPrefab;
+
     #endregion
 
     #region PublicMethod
@@ -64,6 +70,10 @@ public class Youth : Player
             {
                 AxeAction();
             }
+            else if (m_grabItem == ITEM.Key)
+            {
+                KeyAction();
+            }
         }
     }
         #endregion
@@ -87,6 +97,13 @@ public class Youth : Player
                     Destroy(m_collider[i].gameObject);
                     m_axe.SetActive(true);
                     m_grabItem = ITEM.Axe;
+                }
+
+                if (m_collider[i].gameObject.layer == LayerMask.NameToLayer("Key"))
+                {
+                    Destroy(m_collider[i].gameObject);
+                    m_key.SetActive(true);
+                    m_grabItem = ITEM.Key;
                 }
             }
         }
@@ -164,6 +181,26 @@ public class Youth : Player
             m_axe.SetActive(false);
 
             Instantiate(m_axePrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+            m_grabItem = ITEM.None;
+        }
+
+    }
+
+    private void KeyAction()
+    {
+        m_collider = null;
+        m_collider = CheckCollider("Door");
+
+        if (m_collider.Length != 0)
+        {
+            Debug.Log("door open");
+            m_key.SetActive(false);
+        }
+        else
+        {
+            m_key.SetActive(false);
+
+            Instantiate(m_keyPrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
             m_grabItem = ITEM.None;
         }
 
