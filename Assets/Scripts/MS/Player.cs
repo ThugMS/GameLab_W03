@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     public ITEM m_grabItem = ITEM.None;
     public bool m_isUp = false;
+    public bool m_stopMove = false;
     #endregion
 
     #region PrivateVariables
@@ -49,6 +50,12 @@ public class Player : MonoBehaviour
     #region PublicMethod
     public void OnMovement(InputAction.CallbackContext _context)
     {
+        if (m_stopMove == true)
+        {
+            m_Direction = Vector3.zero;
+            return;
+        }
+
         Vector2 input = _context.ReadValue<Vector2>();
 
         m_lastDir = input;

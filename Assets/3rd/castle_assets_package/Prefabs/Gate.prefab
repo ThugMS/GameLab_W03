@@ -311,6 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_isSwitchConnected: 0
   m_door: {fileID: 4628648295117448}
+  direction: 
 --- !u!1 &1237493908401250
 GameObject:
   m_ObjectHideFlags: 0
