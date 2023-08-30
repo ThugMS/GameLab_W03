@@ -36,6 +36,9 @@ public class Senior : Player
     private void OnDisable()
     {
         ResetSetting();
+
+        PlayerManager.instance.SetIsCeiling(m_isCeiling);
+        PlayerManager.instance.SetIsGround(m_isGround);
     }
 
     public void Interact(InputAction.CallbackContext _context)

@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
     #endregion
 
     #region PrivateVariables
-    [SerializeField] protected bool m_isGround = false;
-    [SerializeField] protected bool m_isCeiling = false;
+    [SerializeField] public bool m_isGround = false;
+    [SerializeField] public bool m_isCeiling = false;
     [SerializeField] protected bool m_isStucking = false;
 
     [Header("Camera Rotate")]
@@ -47,7 +47,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float m_fallDeathHeight = 8f;
     #endregion
 
-    #region PublicMethod
+    #region PublicMetho
+
     public void OnMovement(InputAction.CallbackContext _context)
     {
         if (m_stopMove == true)

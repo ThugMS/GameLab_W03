@@ -16,6 +16,10 @@ public class PlayerManager : MonoBehaviour
     public GameObject m_player;
     public PLAYER_TYPE m_playerType;
 
+    public bool m_isGround = false;
+    public bool m_isCeiling = false;
+
+
     public ITEM m_item = ITEM.None;
     #endregion
 
@@ -99,6 +103,16 @@ public class PlayerManager : MonoBehaviour
 
         StartCoroutine(nameof(IE_StopMove), _time);
     }
+
+    public void SetIsCeiling(bool _value)
+    {
+        m_isCeiling = _value;
+    }
+
+    public void SetIsGround(bool _value)
+    {
+        m_isGround = _value;
+    }
     #endregion
 
     #region PrivateMethod
@@ -118,6 +132,8 @@ public class PlayerManager : MonoBehaviour
 
         _obj.SetActive(true);
         _script.enabled = true;
+        _script.m_isGround = m_isGround;
+        _script.m_isCeiling = m_isCeiling;
     }
 
     private void OffSetting<T>(GameObject _obj, T _script) where T : Player

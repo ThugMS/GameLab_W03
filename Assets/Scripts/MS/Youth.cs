@@ -67,6 +67,9 @@ public class Youth : Player
     private void OnDisable()
     {
         ResetSetting();
+        PlayerManager.instance.SetIsCeiling(m_isCeiling);
+        PlayerManager.instance.SetIsGround(m_isGround);
+
         m_isUp = false;
     }
 
