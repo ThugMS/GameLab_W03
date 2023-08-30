@@ -31,16 +31,16 @@ public class TimeManager : MonoBehaviour
         foreach(TimeInfluenced obj in m_levelObjects)
         {
             obj.PlusTime();
-            ++m_timeCount;
         }
+        m_timeCount++;
     }
     public void MinusTIme()
     {
         foreach (TimeInfluenced obj in m_levelObjects)
         {
             obj.MinusTime();
-            --m_timeCount;
         }
+        m_timeCount--;
     }
 
     public void GetObjects(List<TimeInfluenced> _objects)
