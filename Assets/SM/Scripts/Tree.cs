@@ -7,7 +7,7 @@ public class Tree : MonoBehaviour
 	#region PublicVariables
 	#endregion
 	#region PrivateVariables
-	private TimeInfluenced time;
+    [SerializeField] private TimeInfluenced time;
 	#endregion
 	#region PublicMethod
 
@@ -15,16 +15,12 @@ public class Tree : MonoBehaviour
 	{
 		if (time.m_objectTime == 1)
 		{
-			gameObject.SetActive(false);
+			transform.parent.gameObject.SetActive(false);
 			//chop
 		}
 	}
 
     #endregion
-    #region PrivateMethod
-    private void OnEnable()
-    {
-		TryGetComponent(out time);
-    }
+    #region PrivateMethod	
     #endregion
 }
