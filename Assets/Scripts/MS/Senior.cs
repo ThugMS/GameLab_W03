@@ -20,6 +20,7 @@ public class Senior : Player
     [Header("Key")]
     [SerializeField] private GameObject m_key;
     [SerializeField] private GameObject m_keyPrefab;
+    [SerializeField] private Door m_targetDoor;
     #endregion
 
     #region PublicMethod
@@ -28,11 +29,16 @@ public class Senior : Player
         m_speed = 3.0f;
     }
 
+    private void OnDisable()
+    {
+        ResetSetting();
+    }
+
     public void Interact(InputAction.CallbackContext _context)
     {
-        if (GetComponent<Youth>().isActiveAndEnabled == false)
+        if (GetComponent<Senior>().isActiveAndEnabled == false)
             return;
-
+        Debug.Log("yes");
         if (_context.started)
         {
             if (m_grabItem == ITEM.None)
@@ -100,14 +106,29 @@ public class Senior : Player
         if (m_collider.Length != 0)
         {
             Debug.Log("door open");
+            m_collider[0].TryGetComponent(out m_targetDoor);
+            m_targetDoor.InteractStart();
             m_key.SetActive(false);
         }
         else
         {
             m_key.SetActive(false);
+            ReturnKey();
+        }
+    }
 
-            Instantiate(m_keyPrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
-            m_grabItem = ITEM.None;
+    private void ReturnKey()
+    {
+        Instantiate(m_keyPrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+        m_grabItem = ITEM.None;
+    }
+
+    private void ResetSetting()
+    {
+        if(m_grabItem == ITEM.Key)
+        {
+            m_key.SetActive(false);
+            ReturnKey();
         }
     }
     #endregion

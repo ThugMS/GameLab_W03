@@ -51,6 +51,11 @@ public class Youth : Player
         ApplyGravity();
     }
 
+    private void OnDisable()
+    {
+        ResetSetting();
+    }
+
     public void OnJump(InputAction.CallbackContext _context)
     {
         if (GetComponent<Youth>().isActiveAndEnabled == false)
@@ -185,9 +190,7 @@ public class Youth : Player
         else 
         {
             m_axe.SetActive(false);
-
-            Instantiate(m_axePrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
-            m_grabItem = ITEM.None;
+            ReturnAxe();
         }
 
     }
@@ -207,10 +210,37 @@ public class Youth : Player
         else
         {
             m_key.SetActive(false);
-
-            Instantiate(m_keyPrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
-            m_grabItem = ITEM.None;
+            ReturnKey();
         }
+
+    }
+
+    private void ReturnKey()
+    {
+        Instantiate(m_keyPrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+        m_grabItem = ITEM.None;
+    }
+
+    private void ReturnAxe()
+    {
+        Instantiate(m_axePrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+        m_grabItem = ITEM.None;
+    }
+
+    private void ResetSetting()
+    {
+        if (m_grabItem == ITEM.Axe)
+        {
+            m_axe.SetActive(false);
+            ReturnAxe();
+        }
+
+        if (m_grabItem == ITEM.Key)
+        {
+            m_key.SetActive(false);
+            ReturnKey();
+        }
+
 
     }
     #endregion
