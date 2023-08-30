@@ -7,19 +7,18 @@ public class Ax : MonoBehaviour, ISwitchConnectedObjects
     #region PublicVariables
     #endregion
     #region PrivateVariables
-    [SerializeField] private bool isSwitchConnected= false;
+    [SerializeField] private bool m_isSwitchConnected= false;
     #endregion
     #region PublicMethod
+    public void InteractStart()
+    {
+        if (!m_isSwitchConnected)
+        {
+            m_isSwitchConnected = true;
+        }
+    }
     #endregion
     #region PrivateMethod
     #endregion
-    public void InteractStart()
-    {
-        if (!isSwitchConnected)
-        {
-            isSwitchConnected = true;
-            gameObject.SetActive(true);
-        }
-    }
 
 }

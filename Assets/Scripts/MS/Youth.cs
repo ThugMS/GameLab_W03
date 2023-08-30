@@ -17,7 +17,6 @@ public class Youth : Player
 
     #region PrivateVariables
     [Header("Jump")]
-    [SerializeField] private bool m_isJump = false;
     [SerializeField] private bool m_isGround = false;
     [SerializeField] private float m_jumpPower = 1f;
     [SerializeField] private float m_gravityValue = 10f;
@@ -34,7 +33,13 @@ public class Youth : Player
     [SerializeField] private GameObject m_axe;
     [SerializeField] private GameObject m_axePrefab;
 
+
     private Tree m_targetTree;
+
+    [Header("Key")]
+    [SerializeField] private GameObject m_key;
+    [SerializeField] private GameObject m_keyPrefab;
+
     #endregion
 
     #region PublicMethod
@@ -43,8 +48,6 @@ public class Youth : Player
         base.FixedUpdate();
         CheckGround();
         ApplyGravity();
-
-        Debug.Log(transform.forward);
     }
 
     public void OnJump(InputAction.CallbackContext _context)
@@ -63,6 +66,10 @@ public class Youth : Player
             else if (m_grabItem == ITEM.Axe)
             {
                 AxeAction();
+            }
+            else if (m_grabItem == ITEM.Key)
+            {
+                KeyAction();
             }
         }
     }
@@ -87,6 +94,13 @@ public class Youth : Player
                     Destroy(m_collider[i].gameObject);
                     m_axe.SetActive(true);
                     m_grabItem = ITEM.Axe;
+                }
+
+                if (m_collider[i].gameObject.layer == LayerMask.NameToLayer("Key"))
+                {
+                    Destroy(m_collider[i].gameObject);
+                    m_key.SetActive(true);
+                    m_grabItem = ITEM.Key;
                 }
             }
         }
@@ -122,14 +136,16 @@ public class Youth : Player
     private void CheckGround()
     {
         Ray ray = new Ray(transform.position, Vector3.down);
-
-        if(Physics.Raycast(ray, 1.1f, 1 << LayerMask.NameToLayer("Ground")))
+        //1 << LayerMask.NameToLayer("Ground")
+        if (Physics.Raycast(ray, 1.1f))
         {
             m_isGround = true;
+            m_isJump = false;
         }
         else
         {
             m_isGround = false;
+            m_isJump = true;
         }
     }
 
@@ -164,6 +180,26 @@ public class Youth : Player
             m_axe.SetActive(false);
 
             Instantiate(m_axePrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+            m_grabItem = ITEM.None;
+        }
+
+    }
+
+    private void KeyAction()
+    {
+        m_collider = null;
+        m_collider = CheckCollider("Door");
+
+        if (m_collider.Length != 0)
+        {
+            Debug.Log("door open");
+            m_key.SetActive(false);
+        }
+        else
+        {
+            m_key.SetActive(false);
+
+            Instantiate(m_keyPrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
             m_grabItem = ITEM.None;
         }
 
