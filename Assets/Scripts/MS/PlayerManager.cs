@@ -97,7 +97,7 @@ public class PlayerManager : MonoBehaviour
         m_youthScript.m_stopMove = true;
         m_seniorScript.m_stopMove = true;
 
-        StartCoroutine(nameof(IE_StopMove));
+        StartCoroutine(nameof(IE_StopMove), _time);
     }
     #endregion
 

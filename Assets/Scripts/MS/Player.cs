@@ -93,15 +93,15 @@ public class Player : MonoBehaviour
         {
             m_isMove = false;
         }
-            
+
     }
 
     protected virtual void FixedUpdate()
     {
-        CeilingCheck();
         FallingCheck();
         CheckGround();
         CheckHead();
+        CeilingCheck();
 
         #region Camera
         {
@@ -201,6 +201,7 @@ public class Player : MonoBehaviour
             m_isGround = false;
             m_isJump = true;
         }
+        Debug.Log(m_isGround);
     }
 
     private void CeilingCheck()
@@ -253,7 +254,6 @@ public class Player : MonoBehaviour
 
     private void Death()
     {
-        Debug.Log("Falling");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
