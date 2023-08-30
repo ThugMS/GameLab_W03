@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Direction: {x: 0, y: 0, z: 0}
   m_nextRotation: {x: 0, y: 0, z: 0, w: 1}
   m_rotationLerp: 0.8
-  m_rigidbody: {fileID: 0}
+  m_rigidbody: {fileID: 3791650346258343624}
   m_speed: 5
   m_isMove: 0
 --- !u!114 &8258084032338823372
