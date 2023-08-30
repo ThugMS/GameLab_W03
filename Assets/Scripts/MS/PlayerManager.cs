@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region PublicMethod
-    private void Awake()
+    private void Start()
     {
         if(instance == null)
         {
