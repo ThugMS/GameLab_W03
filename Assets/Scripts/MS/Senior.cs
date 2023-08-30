@@ -37,7 +37,7 @@ public class Senior : Player
     {
         ResetSetting();
 
-        PlayerManager.instance.SetIsCeiling(m_isCeiling);
+                PlayerManager.instance.SetIsCeiling(m_isCeiling);
         PlayerManager.instance.SetIsGround(m_isGround);
     }
 
