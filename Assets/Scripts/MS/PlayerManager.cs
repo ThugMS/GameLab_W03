@@ -8,11 +8,15 @@ public enum PLAYER_TYPE
 }
 
 
-public class PlayerManager : TimeInfluenced
+public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager instance;
+
     #region PublicVariables
     public GameObject m_player;
     public PLAYER_TYPE m_playerType;
+
+    public ITEM m_item = ITEM.None;
     #endregion
 
     #region PrivateVariables
@@ -30,18 +34,12 @@ public class PlayerManager : TimeInfluenced
     #endregion
 
     #region PublicMethod
-    private void Update()
+    private void Awake()
     {
-    }
-
-    public override void UpdateTimeState()
-    {
-        ChangeType(m_objectTime);
-    }
-
-    public int GetTimePlayer()
-    {
-        return (int)m_playerType;
+        if(instance == null)
+        {
+            instance = this;
+        }
     }
 
     public void ChangeType(int _time)
@@ -55,39 +53,59 @@ public class PlayerManager : TimeInfluenced
                 break;
 
             case 1:
-                OnSetting(m_youthObj, m_youthScript);
                 OffSetting(m_babyObj, m_babyScript);
                 OffSetting(m_seniorObj, m_seniorScript);
+                OnSetting(m_youthObj, m_youthScript);
                 break;
 
             case 2:
-                OnSetting(m_seniorObj, m_seniorScript);
                 OffSetting(m_babyObj, m_babyScript);
-                OffSetting(m_youthObj, m_youthScript);
+                OffSetting(m_youthObj, m_youthScript, true);
+                OnSetting(m_seniorObj, m_seniorScript);
                 break;
 
             default:
                 break;
         }
+        m_item = ITEM.None;
     }
     #endregion
 
     #region PrivateMethod
     private void OnSetting<T>(GameObject _obj, T _script) where T : Player
-    {
+    {   
+        if(m_item == ITEM.Key)
+        {
+            _script.m_grabItem = ITEM.Key;
+        }
+
         _obj.SetActive(true);
         _script.enabled = true;
     }
 
-    private void OffSetting(GameObject _obj, Player _script)
+    private void OffSetting<T>(GameObject _obj, T _script) where T : Player
     {
+        
+        if (_script.m_grabItem == ITEM.Key)
+        {
+            m_item = ITEM.Key;
+        }
         _obj.SetActive(false);
         _script.enabled = false;
     }
 
-    private void Start()
+
+    private void OffSetting<T>(GameObject _obj, T _script, bool _isUp) where T : Player
     {
-        m_objectTime = TimeManager.s_Instance.m_timeCount;
+
+        if (_script.m_grabItem == ITEM.Key)
+        {
+            m_item = ITEM.Key;
+        }
+        _script.m_isUp = _isUp;
+        _obj.SetActive(false);
+        _script.enabled = false;
+
     }
     #endregion
 }
