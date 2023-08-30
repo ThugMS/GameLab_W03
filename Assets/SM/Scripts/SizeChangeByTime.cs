@@ -14,6 +14,11 @@ public class SizeChangeByTime : TimeInfluenced
     [SerializeField] private float m_youngYPosition = -1f;
     [SerializeField] private float m_youthYPosition = 0f;
     [SerializeField] private float m_elderYPosition = 1f;
+    
+    [Header("Cover Objects")]
+    [SerializeField] private GameObject m_youngObj;
+    [SerializeField] private GameObject m_youthObj;
+    [SerializeField] private GameObject m_elderObj;
 
     [Header("Time")]
     [SerializeField] private int m_startTime;
@@ -23,17 +28,37 @@ public class SizeChangeByTime : TimeInfluenced
     public override void UpdateTimeState()
     {
         StopAllCoroutines();
-        if (m_objectTime <= 0)
+        ResetObjects();
+        if (GetObjectTIme() <= 0)
             EnableYoung();
-        else if (m_objectTime == 1)
+        else if (GetObjectTIme() == 1)
             EnableYouth();
-        else if (m_objectTime >= 2)
+        else if (GetObjectTIme() >= 2)
             EnableElder();
     }
 
-    public void EnableYoung() => StartCoroutine("IE_MoveCoroutine", m_youngYPosition);
-    public void EnableYouth() => StartCoroutine("IE_MoveCoroutine", m_youthYPosition);
-    public void EnableElder() => StartCoroutine("IE_MoveCoroutine", m_elderYPosition);
+    private void ResetObjects()
+    {
+        m_youngObj.SetActive(false);
+        m_youthObj.SetActive(false);
+        m_elderObj.SetActive(false);
+    }
+
+    public void EnableYoung()
+    {
+        m_youngObj.SetActive(true);
+        StartCoroutine(nameof(IE_MoveCoroutine), m_youngYPosition);
+    }
+    public void EnableYouth()
+    {
+        m_youthObj.SetActive(true);
+        StartCoroutine(nameof(IE_MoveCoroutine), m_youthYPosition);
+    }
+    public void EnableElder()
+    {
+        m_elderObj.SetActive(true);
+        StartCoroutine(nameof(IE_MoveCoroutine), m_elderYPosition);
+    }
 
     #endregion
     #region PrivateMethod
@@ -49,7 +74,7 @@ public class SizeChangeByTime : TimeInfluenced
 
     private void OnEnable()
     {
-        m_objectTime = m_startTime;
+        SetStartTime(m_startTime);
     }
     #endregion
 }
