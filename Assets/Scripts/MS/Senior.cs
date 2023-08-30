@@ -109,16 +109,20 @@ public class Senior : Player
         if (m_collider.Length != 0)
         {   
             m_animator.SetTrigger("KeyTrigger");
-            m_collider[0].TryGetComponent(out m_targetDoor);
-            m_targetDoor.InteractStart();
-            m_key.SetActive(false);
-            m_grabItem = ITEM.None;
         }
         else
         {
             m_key.SetActive(false);
             ReturnKey();
         }
+    }
+
+    public void OpenDoor()
+    {
+        m_collider[0].TryGetComponent(out m_targetDoor);
+        m_key.SetActive(false);
+        m_targetDoor.InteractStart();
+        m_grabItem = ITEM.None;
     }
 
     private void ReturnKey()

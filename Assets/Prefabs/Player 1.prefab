@@ -793,7 +793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7606032425866249656, guid: 7ac8f1df84f82e44c900d7a02cb1a5fb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ac8f1df84f82e44c900d7a02cb1a5fb, type: 3}
@@ -831,7 +831,7 @@ Animator:
   m_GameObject: {fileID: 1930498519285365596}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dae2e902d4946eb4589d4e30f27ff953, type: 2}
+  m_Controller: {fileID: 9100000, guid: 22955740fa371574291ffba0ab02c780, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -842,42 +842,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8176781678789827836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930498519285365596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 031021c424416a64eaecd5c697e1f613, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_time: 1
-  m_grabItem: 0
-  m_isUp: 0
-  m_followTransform: {fileID: 0}
-  m_look: {x: 0, y: 0}
-  m_rotationPower: 3
-  m_isGamepad: 0
-  m_isMouse: 0
-  m_mouseSensitivity: 0.1
-  m_padSensitivity: 3
-  m_Direction: {x: 0, y: 0, z: 0}
-  m_nextRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_rotationLerp: 0.8
-  m_rigidbody: {fileID: 0}
-  m_speed: 5
-  m_isMove: 0
-  m_isJump: 0
-  m_lastDir: {x: 0, y: 0}
-  m_key: {fileID: 0}
-  m_keyPrefab: {fileID: 0}
-  m_targetDoor: {fileID: 0}
-  m_isGrab: 0
-  m_isHand: 0
-  m_collider: []
-  m_boxPosition: {x: 0, y: 0, z: 1}
-  m_boxSize: {x: 1.5, y: 2, z: 1.5}
-  m_animator: {fileID: 0}
