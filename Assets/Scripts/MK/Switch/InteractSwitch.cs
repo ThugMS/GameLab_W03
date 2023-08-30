@@ -17,7 +17,7 @@ public class InteractSwitch : MonoBehaviour
     {
         if ( m_canClick && Input.GetKeyDown(KeyCode.F))
         {
-            m_switch.GetComponent<Switch>().TurnSwitch(true);
+            //m_switch.GetComponent<Switch>().TurnSwitch();
         }
     }
     private void OnTriggerEnter(Collider collision)
