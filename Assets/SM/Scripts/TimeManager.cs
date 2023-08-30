@@ -51,6 +51,11 @@ public class TimeManager : MonoBehaviour
     {
         m_levelObjects = _objects;
     }
+
+    public int GetCureentTime()
+    {
+        return m_timeCount;
+    }
     #endregion
     #region PrivateMethod
     private void Awake()

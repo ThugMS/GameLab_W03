@@ -40,6 +40,27 @@ public class PlayerManager : MonoBehaviour
         {
             instance = this;
         }
+
+        switch (TimeManager.s_Instance.GetCureentTime()) 
+        {
+            case 0:
+                m_playerType = PLAYER_TYPE.Baby;
+                break;
+
+            case 1:
+                m_playerType = PLAYER_TYPE.Youth;
+                break;
+
+            case 2:
+                m_playerType = PLAYER_TYPE.Senior;
+                break;
+
+            default:
+                break;
+
+        }
+
+        ChangeType(TimeManager.s_Instance.GetCureentTime());
     }
 
     public void ChangeType(int _time)
