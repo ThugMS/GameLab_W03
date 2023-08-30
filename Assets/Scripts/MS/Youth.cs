@@ -53,13 +53,16 @@ public class Youth : Player
 
     public void OnJump(InputAction.CallbackContext _context)
     {
-        if(GetComponent<Youth>().isActiveAndEnabled == true)
-            Jump(); 
+        if (GetComponent<Youth>().isActiveAndEnabled == false)
+            return;
     }
 
     public void Interact(InputAction.CallbackContext _context)
     {
-        if (_context.started)
+        if (GetComponent<Youth>().isActiveAndEnabled == false)
+            return;
+
+            if (_context.started)
         {
             if (m_grabItem == ITEM.None)
             {
