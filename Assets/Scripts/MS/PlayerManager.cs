@@ -68,9 +68,9 @@ public class PlayerManager : MonoBehaviour
         switch(_time)
         {
             case 0:
-                OnSetting(m_babyObj, m_babyScript);
                 OffSetting(m_youthObj, m_youthScript);
                 OffSetting(m_seniorObj, m_seniorScript);
+                OnSetting(m_babyObj, m_babyScript);
                 break;
 
             case 1:
@@ -96,8 +96,15 @@ public class PlayerManager : MonoBehaviour
     private void OnSetting<T>(GameObject _obj, T _script) where T : Player
     {   
         if(m_item == ITEM.Key)
-        {
-            _script.m_grabItem = ITEM.Key;
+        {   
+            if(TimeManager.s_Instance.GetCureentTime() == 0)
+            {
+                _script.m_isUp = true;
+            }
+            else
+            {
+                _script.m_grabItem = ITEM.Key;
+            }
         }
 
         _obj.SetActive(true);
@@ -107,7 +114,7 @@ public class PlayerManager : MonoBehaviour
     private void OffSetting<T>(GameObject _obj, T _script) where T : Player
     {
         
-        if (_script.m_grabItem == ITEM.Key)
+        if (_script.m_grabItem == ITEM.Key && TimeManager.s_Instance.GetCureentTime() != 0)
         {
             m_item = ITEM.Key;
         }
