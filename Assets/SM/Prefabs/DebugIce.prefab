@@ -49,6 +49,9 @@ MonoBehaviour:
   m_youngYPosition: 1
   m_youthYPosition: 0
   m_elderYPosition: -0.99
+  m_youngObj: {fileID: 1136368090714265285}
+  m_youthObj: {fileID: 1136368090714265285}
+  m_elderObj: {fileID: 1136368090714265285}
   m_startTime: 1
   m_timeScale: 2
 --- !u!1 &1136368090714265285

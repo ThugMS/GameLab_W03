@@ -13,7 +13,7 @@ public class Tree : MonoBehaviour
 
 	public bool Chop()
 	{
-		if (time.m_objectTime == 1)
+		if (time.GetObjectTIme() == 1)
 		{
 			transform.parent.gameObject.SetActive(false);
 			//chop
