@@ -40,6 +40,11 @@ public class Senior : Player
 
     public void Interact(InputAction.CallbackContext _context)
     {
+        if (m_stopMove == true)
+        {
+            return;
+        }
+
         if (GetComponent<Senior>().isActiveAndEnabled == false)
             return;
         if (_context.started)
