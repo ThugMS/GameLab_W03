@@ -31,7 +31,7 @@ public class Youth : Player
     [Header("Axe")]
     [SerializeField] private GameObject m_axe;
     [SerializeField] private GameObject m_axePrefab;
-    private Tree m_targetTree;
+    private TreeChangeByTime m_targetTree;
 
 
     [Header("Key")]
@@ -188,8 +188,18 @@ public class Youth : Player
         if (m_collider.Length != 0)
         {
             m_collider[0].TryGetComponent(out m_targetTree);
-            m_targetTree.Chop();
-            m_animator.SetTrigger("AxeTrigger");
+            if (m_targetTree != null)
+            {
+                if (m_targetTree.Chop())
+                {
+                    m_targetTree = null;
+                    m_animator.SetTrigger("AxeTrigger");
+                }
+                else
+                {
+                   //Play Fail Animation
+                }
+            }
         }
         else 
         {
@@ -252,7 +262,6 @@ public class Youth : Player
         }
         else
         {
-            Debug.Log("yes");
             if (m_grabItem == ITEM.Key)
             {
                 m_key.SetActive(false);

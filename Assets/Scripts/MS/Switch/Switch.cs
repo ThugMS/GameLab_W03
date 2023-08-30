@@ -8,9 +8,9 @@ public class Switch : MonoBehaviour
     #endregion
 
     #region PrivateVariables
-    [SerializeField]private bool m_isSwitchOn = false;
-    [SerializeField]private GameObject m_switchObject;
-    private List<GameObject> switchObjects = new List<GameObject>();
+    [SerializeField] private bool m_isSwitchOn = false;
+    [SerializeField] private GameObject m_switchObject;
+    [SerializeField] private List<GameObject> switchObjects = new List<GameObject>();
     #endregion
 
     #region PublicMethod
