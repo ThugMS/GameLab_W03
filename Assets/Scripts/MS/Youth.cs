@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public enum ITEM
 {
@@ -15,7 +16,7 @@ public class Youth : Player
 
     #region PrivateVariables
     [Header("Jump")]
-    [SerializeField] private bool m_isGround = false;
+    //[SerializeField] private bool m_isGround = false;
     [SerializeField] private float m_jumpPower = 1f;
     [SerializeField] private float m_gravityValue = 10f;
 
@@ -38,6 +39,7 @@ public class Youth : Player
     [SerializeField] private GameObject m_keyPrefab;
     [SerializeField] private Door m_targetDoor;
 
+
     [Header("Animation")]
     [SerializeField] private Animator m_animator;
     #endregion
@@ -46,9 +48,11 @@ public class Youth : Player
     protected override void FixedUpdate()
     {   
         base.FixedUpdate();
-        CheckGround();
         ApplyGravity();
     }
+
+    
+
 
     private void OnEnable()
     {
@@ -158,21 +162,7 @@ public class Youth : Player
         Gizmos.DrawWireCube(m_boxPosition, m_boxSize);
     }
 
-    private void CheckGround()
-    {
-        Ray ray = new Ray(transform.position, Vector3.down);
-        //1 << LayerMask.NameToLayer("Ground")
-        if (Physics.Raycast(ray, 1.1f))
-        {
-            m_isGround = true;
-            m_isJump = false;
-        }
-        else
-        {
-            m_isGround = false;
-            m_isJump = true;
-        }
-    }
+
 
     private void Jump()
     {

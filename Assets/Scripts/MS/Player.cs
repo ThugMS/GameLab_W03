@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
     #endregion
 
     #region PrivateVariables
+    [SerializeField] protected bool m_isGround = false;
+
     [Header("Camera Rotate")]
     [SerializeField] protected GameObject m_followTransform;
     [SerializeField] protected Vector2 m_look = Vector2.zero;
@@ -33,6 +36,10 @@ public class Player : MonoBehaviour
     [SerializeField] protected bool m_isJump = false;
 
     [SerializeField] private Vector2 m_lastDir;
+
+    [Header("Falling")]
+    [SerializeField] private bool m_isFalling = false;
+    [SerializeField] private float m_fallStartTime;
     #endregion
 
     #region PublicMethod
@@ -80,6 +87,9 @@ public class Player : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        FallingCheck();
+        CheckGround();
+
         #region Camera
         {
             m_followTransform.transform.rotation *= Quaternion.AngleAxis(m_look.x * m_rotationPower, Vector3.up);
@@ -161,6 +171,58 @@ public class Player : MonoBehaviour
         {
             m_isGamepad = true;
             m_isMouse = false;
+        }
+    }
+
+    private void CheckGround()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        //1 << LayerMask.NameToLayer("Ground")
+        if (Physics.Raycast(ray, 1.1f))
+        {
+            m_isGround = true;
+            m_isJump = false;
+        }
+        else
+        {
+            m_isGround = false;
+            m_isJump = true;
+        }
+    }
+
+    private void FallingCheck()
+    {
+        if (!m_isGround && m_rigidbody.velocity.y < 0)
+        {
+            if (!m_isFalling)
+            {
+                m_isFalling = true;
+                m_fallStartTime = Time.time;
+                StartCoroutine(CheckFallingDuration());
+            }
+        }
+        else
+        {
+            if (m_isFalling)
+            {
+                m_isFalling = false;
+                StopCoroutine(CheckFallingDuration());
+            }
+        }
+    }
+
+    private IEnumerator CheckFallingDuration()
+    {
+        while (m_isFalling)
+        {
+            if (Time.time - m_fallStartTime >= 1f)
+            {
+                Debug.Log("Falling");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                break;
+            }
+
+            yield return null;
         }
     }
     #endregion
