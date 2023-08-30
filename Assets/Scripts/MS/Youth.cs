@@ -43,6 +43,8 @@ public class Youth : Player
         base.FixedUpdate();
         CheckGround();
         ApplyGravity();
+
+        Debug.Log(transform.forward);
     }
 
     public void OnJump(InputAction.CallbackContext _context)
@@ -94,7 +96,8 @@ public class Youth : Player
     {
         Collider[] collider;
 
-        collider = Physics.OverlapBox(transform.position + m_boxPosition, m_boxSize * 0.5f, transform.rotation);
+        Vector3 pos = transform.position + transform.forward;
+        collider = Physics.OverlapBox(pos, m_boxSize * 0.5f, Quaternion.Euler(transform.forward));
 
         return collider;
     }
@@ -103,7 +106,8 @@ public class Youth : Player
     {
         Collider[] collider = null;
 
-        collider = Physics.OverlapBox(transform.position + m_boxPosition, m_boxSize * 0.5f, transform.rotation, 1 << LayerMask.NameToLayer(_layer));
+        Vector3 pos = transform.position + transform.forward;
+        collider = Physics.OverlapBox(pos, m_boxSize * 0.5f, transform.rotation, 1 << LayerMask.NameToLayer(_layer));
 
         return collider;
     }
