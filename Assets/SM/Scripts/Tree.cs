@@ -15,12 +15,12 @@ public class Tree : MonoBehaviour
 	{
 		if (time.m_objectTime == 1)
 		{
-			gameObject.SetActive(false);
+			transform.parent.gameObject.SetActive(false);
 			//chop
 		}
 	}
 
     #endregion
-    #region PrivateMethod
+    #region PrivateMethod	
     #endregion
 }
