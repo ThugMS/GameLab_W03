@@ -33,6 +33,8 @@ public class Youth : Player
     [Header("Axe")]
     [SerializeField] private GameObject m_axe;
     [SerializeField] private GameObject m_axePrefab;
+
+    private Tree m_targetTree;
     #endregion
 
     #region PublicMethod
@@ -41,6 +43,8 @@ public class Youth : Player
         base.FixedUpdate();
         CheckGround();
         ApplyGravity();
+
+        Debug.Log(transform.forward);
     }
 
     public void OnJump(InputAction.CallbackContext _context)
@@ -92,7 +96,8 @@ public class Youth : Player
     {
         Collider[] collider;
 
-        collider = Physics.OverlapBox(transform.position + m_boxPosition, m_boxSize * 0.5f, transform.rotation);
+        Vector3 pos = transform.position + transform.forward;
+        collider = Physics.OverlapBox(pos, m_boxSize * 0.5f, Quaternion.Euler(transform.forward));
 
         return collider;
     }
@@ -101,7 +106,8 @@ public class Youth : Player
     {
         Collider[] collider = null;
 
-        collider = Physics.OverlapBox(transform.position + m_boxPosition, m_boxSize * 0.5f, transform.rotation, 1 << LayerMask.NameToLayer(_layer));
+        Vector3 pos = transform.position + transform.forward;
+        collider = Physics.OverlapBox(pos, m_boxSize * 0.5f, transform.rotation, 1 << LayerMask.NameToLayer(_layer));
 
         return collider;
     }
@@ -150,7 +156,8 @@ public class Youth : Player
 
         if (m_collider.Length != 0)
         {
-           
+            m_collider[0].TryGetComponent(out m_targetTree);
+            m_targetTree.Chop();
         }
         else 
         {
