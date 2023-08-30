@@ -6,7 +6,7 @@ public abstract class TimeInfluenced : MonoBehaviour
 {
 	#region PublicVariables
 	#endregion
-	protected int m_objectTime
+	public int m_objectTime
 	{
 		get
 		{
