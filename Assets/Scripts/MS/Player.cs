@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
 {
     #region PublicVariables
     public int m_time = 1;
+
+    public ITEM m_grabItem = ITEM.None;
+    public bool m_isUp = false;
     #endregion
 
     #region PrivateVariables
@@ -154,7 +157,5 @@ public class Player : MonoBehaviour
             m_isMouse = false;
         }
     }
-
-    
     #endregion
 }

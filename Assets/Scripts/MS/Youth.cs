@@ -12,7 +12,6 @@ public enum ITEM
 public class Youth : Player
 {
     #region PublicVariables
-    public ITEM m_grabItem = ITEM.None;
     #endregion
 
     #region PrivateVariables
@@ -32,15 +31,13 @@ public class Youth : Player
     [Header("Axe")]
     [SerializeField] private GameObject m_axe;
     [SerializeField] private GameObject m_axePrefab;
-
-
     private Tree m_targetTree;
-    private Door m_targetDoor;
+
 
     [Header("Key")]
     [SerializeField] private GameObject m_key;
     [SerializeField] private GameObject m_keyPrefab;
-
+    [SerializeField] private Door m_targetDoor;
     #endregion
 
     #region PublicMethod
@@ -49,6 +46,14 @@ public class Youth : Player
         base.FixedUpdate();
         CheckGround();
         ApplyGravity();
+    }
+
+    private void OnEnable()
+    {
+        if (m_grabItem == ITEM.Key)
+        {
+            m_key.SetActive(true);
+        }
     }
 
     private void OnDisable()
@@ -235,10 +240,18 @@ public class Youth : Player
             ReturnAxe();
         }
 
-        if (m_grabItem == ITEM.Key)
+        if(m_isUp == true)
         {
             m_key.SetActive(false);
-            ReturnKey();
+            m_grabItem = ITEM.None;
+        }
+        else
+        {
+            if (m_grabItem == ITEM.Key)
+            {
+                m_key.SetActive(false);
+                ReturnKey();
+            }
         }
 
 

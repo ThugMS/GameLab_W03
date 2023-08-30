@@ -33,6 +33,8 @@ public class TimeManager : MonoBehaviour
             obj.PlusTime();
         }
         m_timeCount++;
+
+        PlayerManager.instance.ChangeType(m_timeCount);
     }
     public void MinusTIme()
     {
@@ -41,6 +43,8 @@ public class TimeManager : MonoBehaviour
             obj.MinusTime();
         }
         m_timeCount--;
+
+        PlayerManager.instance.ChangeType(m_timeCount);
     }
 
     public void GetObjects(List<TimeInfluenced> _objects)

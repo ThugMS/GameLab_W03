@@ -6,7 +6,10 @@ using UnityEngine.InputSystem;
 public class Senior : Player
 {
     #region PublicVariables
-    public ITEM m_grabItem = ITEM.None;
+    [Header("Key")]
+    public GameObject m_key;
+    public GameObject m_keyPrefab;
+    public Door m_targetDoor;
     #endregion
 
     #region PrivateVariables
@@ -17,16 +20,17 @@ public class Senior : Player
     [SerializeField] private Vector3 m_boxPosition = new Vector3(0, 0, 1f);
     [SerializeField] private Vector3 m_boxSize = new Vector3(1.5f, 2, 1.5f);
 
-    [Header("Key")]
-    [SerializeField] private GameObject m_key;
-    [SerializeField] private GameObject m_keyPrefab;
-    [SerializeField] private Door m_targetDoor;
+    
     #endregion
 
     #region PublicMethod
     private void OnEnable()
     {
         m_speed = 3.0f;
+        if (m_grabItem == ITEM.Key)
+        {
+            m_key.SetActive(true);
+        }
     }
 
     private void OnDisable()
@@ -128,7 +132,7 @@ public class Senior : Player
         if(m_grabItem == ITEM.Key)
         {
             m_key.SetActive(false);
-            ReturnKey();
+            m_grabItem = ITEM.None;
         }
     }
     #endregion
