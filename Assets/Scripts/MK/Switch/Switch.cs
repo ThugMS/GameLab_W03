@@ -24,11 +24,14 @@ public class Switch : MonoBehaviour
         
         foreach (GameObject obj in switchObjects)
         {
-            if (!obj.activeSelf)
+            if (obj != null)
             {
-                obj.SetActive(true);
+                if (!obj.activeSelf)
+                {
+                    obj.SetActive(true);
+                }
+                obj.GetComponent<ISwitchConnectedObjects>().InteractStart();
             }
-            obj.GetComponent<ISwitchConnectedObjects>().InteractStart();
         }
     }
     #endregion

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ax : MonoBehaviour, ISwitchConnectedObjects
+public class Key : MonoBehaviour, ISwitchConnectedObjects
 {
     #region PublicVariables
     #endregion
@@ -20,5 +20,6 @@ public class Ax : MonoBehaviour, ISwitchConnectedObjects
     #endregion
     #region PrivateMethod
     #endregion
+
 
 }
