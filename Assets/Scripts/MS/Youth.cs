@@ -4,9 +4,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum ITEM
+{
+    None, Axe, Key
+}
+
 public class Youth : Player
 {
     #region PublicVariables
+    public ITEM m_grabItem = ITEM.None;
     #endregion
 
     #region PrivateVariables
@@ -19,11 +25,14 @@ public class Youth : Player
     [Header("Grab")]
     [SerializeField] private bool m_isGrab = false;
     [SerializeField] private bool m_isHand = false;
-    [SerializeField] Collider[] m_collider;
+    [SerializeField] private Collider[] m_collider;
     [SerializeField] private Vector3 m_boxPosition = new Vector3 (0, 0, 1f);
     [SerializeField] private Vector3 m_boxSize = new Vector3(1.5f, 2, 1.5f);
 
 
+    [Header("Axe")]
+    [SerializeField] private GameObject m_axe;
+    [SerializeField] private GameObject m_axePrefab;
     #endregion
 
     #region PublicMethod
@@ -41,25 +50,60 @@ public class Youth : Player
 
     public void Interact(InputAction.CallbackContext _context)
     {
-        if (m_isGrab == false)
+        if (_context.started)
         {
-            //CheckInteract();
+            if (m_grabItem == ITEM.None)
+            {
+                CheckInteract();
+            }
+            else if (m_grabItem == ITEM.Axe)
+            {
+                AxeAction();
+            }
         }
     }
-    #endregion
+        #endregion
 
     #region PrivateMethod
     public void CheckInteract()
-    {   
-        m_collider = Physics.OverlapBox(transform.position + m_boxPosition, m_boxSize * 0.5f, transform.rotation);
-        
+    {
+        m_collider = CheckCollider();
+
         if(m_collider != null)
-        {
-            if (m_collider[0].tag == "Ax")
+        {   
+            for(int i=0;i< m_collider.Length;i++)
             {
-                
+                if (m_collider[i].tag == "Switch")
+                {
+                    m_collider[i].GetComponent<Switch>().TurnSwitch();
+                }
+
+                if (m_collider[i].gameObject.layer == LayerMask.NameToLayer("Axe"))
+                {
+                    Destroy(m_collider[i].gameObject);
+                    m_axe.SetActive(true);
+                    m_grabItem = ITEM.Axe;
+                }
             }
         }
+    }
+
+    private Collider[] CheckCollider()
+    {
+        Collider[] collider;
+
+        collider = Physics.OverlapBox(transform.position + m_boxPosition, m_boxSize * 0.5f, transform.rotation);
+
+        return collider;
+    }
+
+    private Collider[] CheckCollider(string _layer)
+    {
+        Collider[] collider = null;
+
+        collider = Physics.OverlapBox(transform.position + m_boxPosition, m_boxSize * 0.5f, transform.rotation, 1 << LayerMask.NameToLayer(_layer));
+
+        return collider;
     }
 
     private void OnDrawGizmos()
@@ -97,6 +141,25 @@ public class Youth : Player
         {
             m_rigidbody.velocity += Vector3.down * m_gravityValue * Time.deltaTime;
         }
+    }
+
+    private void AxeAction()
+    {
+        m_collider = null;
+        m_collider = CheckCollider("Tree");
+
+        if (m_collider.Length != 0)
+        {
+           
+        }
+        else 
+        {
+            m_axe.SetActive(false);
+
+            Instantiate(m_axePrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+            m_grabItem = ITEM.None;
+        }
+
     }
     #endregion
 }
