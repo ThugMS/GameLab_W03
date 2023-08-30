@@ -30,6 +30,9 @@ public class Senior : Player
 
     public void Interact(InputAction.CallbackContext _context)
     {
+        if (GetComponent<Youth>().isActiveAndEnabled == false)
+            return;
+
         if (_context.started)
         {
             if (m_grabItem == ITEM.None)
