@@ -10,16 +10,35 @@ public enum PLAYER_TYPE
 
 public class PlayerManager : MonoBehaviour
 {
-    #region PublicVariables
+    public static PlayerManager instance;
 
+    #region PublicVariables
+    public GameObject m_player;
+
+    public PLAYER_TYPE m_playerType;
     #endregion
 
     #region PrivateVariables
     #endregion
 
     #region PublicMethod
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    public int GetTimePlayer()
+    {
+        return (int)m_playerType;
+    }
+
+    
     #endregion
 
     #region PrivateMethod
+   
     #endregion
 }
