@@ -16,7 +16,6 @@ public class PlayerControlTime : MonoBehaviour
 	{
 		if (context.performed)
 		{
-			Debug.Log("Minus");
 			int timeCount = TimeManager.s_Instance.m_timeCount;
 			if (timeCount < 1)
 				return;
