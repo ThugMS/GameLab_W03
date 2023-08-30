@@ -84,5 +84,10 @@ public class PlayerManager : TimeInfluenced
         _obj.SetActive(false);
         _script.enabled = false;
     }
+
+    private void Start()
+    {
+        m_objectTime = TimeManager.s_Instance.m_timeCount;
+    }
     #endregion
 }

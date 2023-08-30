@@ -69,7 +69,7 @@ public class Youth : Player
         if (GetComponent<Youth>().isActiveAndEnabled == false)
             return;
 
-            if (_context.started)
+        if (_context.started)
         {
             if (m_grabItem == ITEM.None)
             {

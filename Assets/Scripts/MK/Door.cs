@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class Door : MonoBehaviour, ISwitchConnectedObjects
@@ -11,6 +10,7 @@ public class Door : MonoBehaviour, ISwitchConnectedObjects
     #region PrivateVariables
     [SerializeField] private bool m_isSwitchConnected= false;
     [SerializeField] private Transform m_door;
+    [SerializeField] private string direction;
     #endregion
     #region PublicMethod
     public void InteractStart()
@@ -48,7 +48,7 @@ public class Door : MonoBehaviour, ISwitchConnectedObjects
     {
         if (collision.gameObject.CompareTag("Player") && m_isSwitchConnected)
         {
-            SceneManager.LoadScene(0);
+            LoadSceneManager.s_Instance.ChangeScene(direction);
         }
     }
 
