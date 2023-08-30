@@ -31,7 +31,7 @@ public class Youth : Player
     [Header("Axe")]
     [SerializeField] private GameObject m_axe;
     [SerializeField] private GameObject m_axePrefab;
-    private Tree m_targetTree;
+    private TreeChangeByTime m_targetTree;
 
 
     [Header("Key")]
