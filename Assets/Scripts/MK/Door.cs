@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class Door : MonoBehaviour, ISwitchConnectedObjects
@@ -10,14 +11,13 @@ public class Door : MonoBehaviour, ISwitchConnectedObjects
     #region PrivateVariables
     [SerializeField] private bool m_isSwitchConnected= false;
     [SerializeField] private Transform m_door;
-    [SerializeField] private Collider m_doorPortal;
     #endregion
     #region PublicMethod
     public void InteractStart()
     {
         if (!m_isSwitchConnected)
         {
-            m_isSwitchConnected = true;
+            Debug.Log("door");
 
             if (m_door != null)
             {
@@ -38,9 +38,18 @@ public class Door : MonoBehaviour, ISwitchConnectedObjects
 
     private void RotateDoor()
     {
-        m_door.DORotate(new Vector3(0f, 100f, 0f), 2.0f);
+        Tween tween = m_door.DORotate(new Vector3(0f, 100f, 0f), 2.0f);
+        tween.WaitForCompletion();
+        m_isSwitchConnected = true;
     }
     #endregion
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && m_isSwitchConnected)
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
 
 }
