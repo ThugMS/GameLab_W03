@@ -90,6 +90,15 @@ public class PlayerManager : MonoBehaviour
         }
         m_item = ITEM.None;
     }
+
+    public void StopMove(float _time)
+    {
+        m_babyScript.m_stopMove = true;
+        m_youthScript.m_stopMove = true;
+        m_seniorScript.m_stopMove = true;
+
+        StartCoroutine(nameof(IE_StopMove));
+    }
     #endregion
 
     #region PrivateMethod
@@ -134,6 +143,15 @@ public class PlayerManager : MonoBehaviour
         _obj.SetActive(false);
         _script.enabled = false;
 
+    }
+
+    private IEnumerator IE_StopMove(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+
+        m_babyScript.m_stopMove = false;
+        m_youthScript.m_stopMove = false;
+        m_seniorScript.m_stopMove = false;
     }
     #endregion
 }

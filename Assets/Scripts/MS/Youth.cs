@@ -72,6 +72,11 @@ public class Youth : Player
 
     public void OnJump(InputAction.CallbackContext _context)
     {
+        if (m_stopMove == true)
+        {
+            return;
+        }
+
         if (GetComponent<Youth>().isActiveAndEnabled == false)
             return;
 
@@ -80,6 +85,11 @@ public class Youth : Player
 
     public void Interact(InputAction.CallbackContext _context)
     {
+        if (m_stopMove == true)
+        {
+            return;
+        }
+
         if (GetComponent<Youth>().isActiveAndEnabled == false)
             return;
 
