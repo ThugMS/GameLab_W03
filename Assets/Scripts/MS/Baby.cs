@@ -14,7 +14,6 @@ public class Baby : Player
     #region PublicMethod
     private void OnEnable()
     {
-        m_speed = 3.0f;
     }
     #endregion
 
