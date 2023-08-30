@@ -114,6 +114,7 @@ public class Player : MonoBehaviour
         #endregion
 
         #region Move
+        
         m_nextRotation = Quaternion.Euler(new Vector3(0, m_nextRotation.eulerAngles.y, 0));
 
         Vector2 movedirection = new Vector2(m_Direction.x, m_Direction.z);
@@ -124,10 +125,15 @@ public class Player : MonoBehaviour
             anglef *= -1f;
         }
 
+        if (movedirection == Vector2.zero) {
+            m_rigidbody.angularVelocity = new Vector3(0, 0, 0);
+            m_rigidbody.velocity = new Vector3(0, m_rigidbody.velocity.y, 0);
+            return;
+        }
+            
         if (m_isMove == true)
         {
             transform.rotation = Quaternion.Lerp(Quaternion.Euler(0, m_nextRotation.eulerAngles.y + anglef, 0), transform.rotation, m_rotationLerp);
-
             Move();
         }
         else if (m_isJump == true)

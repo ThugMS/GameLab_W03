@@ -36,10 +36,13 @@ public class Youth : Player
 
 
     [Header("Key")]
-    [SerializeField] private GameObject m_key;
+    [SerializeField] public GameObject m_key;
     [SerializeField] private GameObject m_keyPrefab;
     [SerializeField] private Door m_targetDoor;
 
+
+    [Header("Animation")]
+    [SerializeField] private Animator m_animator;
     #endregion
 
     #region PublicMethod
@@ -111,6 +114,7 @@ public class Youth : Player
                 if (m_collider[i].tag == "Switch")
                 {
                     m_collider[i].GetComponent<Switch>().TurnSwitch();
+                    break;
                 }
 
                 if (m_collider[i].gameObject.layer == LayerMask.NameToLayer("Axe"))
@@ -118,6 +122,7 @@ public class Youth : Player
                     Destroy(m_collider[i].gameObject);
                     m_axe.SetActive(true);
                     m_grabItem = ITEM.Axe;
+                    break;
                 }
 
                 if (m_collider[i].gameObject.layer == LayerMask.NameToLayer("Key"))
@@ -125,6 +130,7 @@ public class Youth : Player
                     m_collider[i].gameObject.SetActive(false);
                     m_key.SetActive(true);
                     m_grabItem = ITEM.Key;
+                    break;
                 }
             }
         }
@@ -184,6 +190,7 @@ public class Youth : Player
         {
             m_collider[0].TryGetComponent(out m_targetTree);
             m_targetTree.Chop();
+            m_animator.SetTrigger("AxeTrigger");
         }
         else 
         {
@@ -200,12 +207,7 @@ public class Youth : Player
 
         if (m_collider.Length != 0)
         {
-            Debug.Log("door open");
-            m_collider[0].TryGetComponent(out m_targetDoor);
-            m_targetDoor.InteractStart();
-            m_key.SetActive(false);
-
-            m_grabItem = ITEM.None;
+            m_animator.SetTrigger("KeyTrigger");
         }
         else
         {
@@ -213,6 +215,14 @@ public class Youth : Player
             ReturnKey();
         }
 
+    }
+
+    public void OpenDoor()
+    {
+        m_collider[0].TryGetComponent(out m_targetDoor);
+        m_key.SetActive(false);
+        m_targetDoor.InteractStart();
+        m_grabItem = ITEM.None;
     }
 
     private void ReturnKey()
