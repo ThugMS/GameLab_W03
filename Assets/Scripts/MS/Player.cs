@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     [Header("Falling")]
     [SerializeField] private bool m_isFalling = false;
     [SerializeField] private float m_fallStartTime;
+    [SerializeField] private float m_fallStartYPosition;
+    [SerializeField] private float m_fallDeathHeight = 8f;
     #endregion
 
     #region PublicMethod
@@ -91,15 +93,15 @@ public class Player : MonoBehaviour
         {
             m_isMove = false;
         }
-            
+
     }
 
     protected virtual void FixedUpdate()
     {
-        CeilingCheck();
         FallingCheck();
         CheckGround();
         CheckHead();
+        CeilingCheck();
 
         #region Camera
         {
@@ -199,6 +201,7 @@ public class Player : MonoBehaviour
             m_isGround = false;
             m_isJump = true;
         }
+        Debug.Log(m_isGround);
     }
 
     private void CeilingCheck()
@@ -217,6 +220,7 @@ public class Player : MonoBehaviour
             {
                 m_isFalling = true;
                 m_fallStartTime = Time.time;
+                m_fallStartYPosition = transform.position.y;
                 StartCoroutine(CheckFallingDuration());
             }
         }
@@ -225,6 +229,10 @@ public class Player : MonoBehaviour
             if (m_isFalling)
             {
                 m_isFalling = false;
+                if (m_fallStartYPosition - transform.position.y >= m_fallDeathHeight)
+                {
+                    Death();
+                }
                 StopCoroutine(CheckFallingDuration());
             }
         }
@@ -234,15 +242,19 @@ public class Player : MonoBehaviour
     {
         while (m_isFalling)
         {
-            if (Time.time - m_fallStartTime >= 1f)
+            if (Time.time - m_fallStartTime >= 3f)
             {
-                Debug.Log("Falling");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Death();
                 break;
             }
 
             yield return null;
         }
+    }
+
+    private void Death()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void CheckHead()

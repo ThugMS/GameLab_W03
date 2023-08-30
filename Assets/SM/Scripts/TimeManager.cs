@@ -37,6 +37,8 @@ public class TimeManager : MonoBehaviour
         m_timeCount++;
 
         PlayerManager.instance.ChangeType(m_timeCount);
+        PlayerManager.instance.StopMove(m_skipTimeLength);
+        CameraShakeTrigger.instance.ShakeCamera(2, m_skipTimeLength);
     }
     public void MinusTIme()
     {
@@ -47,6 +49,8 @@ public class TimeManager : MonoBehaviour
         m_timeCount--;
 
         PlayerManager.instance.ChangeType(m_timeCount);
+        PlayerManager.instance.StopMove(m_skipTimeLength);
+        CameraShakeTrigger.instance.ShakeCamera(2, m_skipTimeLength);
     }
 
     public void GetObjects(List<TimeInfluenced> _objects)
@@ -71,7 +75,7 @@ public class TimeManager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        m_skipTimeLength = 0.5f;
+        m_skipTimeLength = 1f;
     }
     #endregion
 }
