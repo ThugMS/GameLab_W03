@@ -42,7 +42,6 @@ public class Senior : Player
     {
         if (GetComponent<Senior>().isActiveAndEnabled == false)
             return;
-        Debug.Log("yes");
         if (_context.started)
         {
             if (m_grabItem == ITEM.None)
@@ -113,6 +112,7 @@ public class Senior : Player
             m_collider[0].TryGetComponent(out m_targetDoor);
             m_targetDoor.InteractStart();
             m_key.SetActive(false);
+            m_grabItem = ITEM.None;
         }
         else
         {
