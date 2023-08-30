@@ -17,7 +17,6 @@ public class Youth : Player
 
     #region PrivateVariables
     [Header("Jump")]
-    [SerializeField] private bool m_isJump = false;
     [SerializeField] private bool m_isGround = false;
     [SerializeField] private float m_jumpPower = 1f;
     [SerializeField] private float m_gravityValue = 10f;
@@ -49,8 +48,6 @@ public class Youth : Player
         base.FixedUpdate();
         CheckGround();
         ApplyGravity();
-
-        Debug.Log(transform.forward);
     }
 
     public void OnJump(InputAction.CallbackContext _context)
@@ -139,14 +136,16 @@ public class Youth : Player
     private void CheckGround()
     {
         Ray ray = new Ray(transform.position, Vector3.down);
-
-        if(Physics.Raycast(ray, 1.1f, 1 << LayerMask.NameToLayer("Ground")))
+        //1 << LayerMask.NameToLayer("Ground")
+        if (Physics.Raycast(ray, 1.1f))
         {
             m_isGround = true;
+            m_isJump = false;
         }
         else
         {
             m_isGround = false;
+            m_isJump = true;
         }
     }
 

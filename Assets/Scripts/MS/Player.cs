@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
     [SerializeField] protected Rigidbody m_rigidbody;
     [SerializeField] protected float m_speed = 5f;
     [SerializeField] protected bool m_isMove = false;
+    [SerializeField] protected bool m_isJump = false;
+
+    [SerializeField] private Vector2 m_lastDir;
     #endregion
 
     #region PublicMethod
@@ -34,8 +37,16 @@ public class Player : MonoBehaviour
     {
         Vector2 input = _context.ReadValue<Vector2>();
 
+        m_lastDir = input;
+
+        if (m_isJump == true && input == Vector2.zero)
+            return;
+        
         m_Direction = new Vector3(input.x, 0f, input.y);
-        m_isMove = true;
+
+        if (Vector2.zero != input)
+            m_isMove = true;
+
     }
 
     public void OnLook(InputAction.CallbackContext _context)
@@ -57,10 +68,11 @@ public class Player : MonoBehaviour
 
     protected virtual void Update()
     {
-        if(m_Direction == Vector3.zero)
+        if (m_lastDir == Vector2.zero)
         {
             m_isMove = false;
         }
+            
     }
 
     protected virtual void FixedUpdate()
@@ -89,21 +101,24 @@ public class Player : MonoBehaviour
         #endregion
 
         #region Move
-        
-        if(m_isMove == true)
+        m_nextRotation = Quaternion.Euler(new Vector3(0, m_nextRotation.eulerAngles.y, 0));
+
+        Vector2 movedirection = new Vector2(m_Direction.x, m_Direction.z);
+        Vector2 a = new Vector2(0, 1f);
+        float anglef = Vector2.Angle(a, movedirection);
+        if (movedirection.x < 0)
         {
-            m_nextRotation = Quaternion.Euler(new Vector3(0, m_nextRotation.eulerAngles.y, 0));
+            anglef *= -1f;
+        }
 
-            Vector2 movedirection = new Vector2(m_Direction.x, m_Direction.z);
-            Vector2 a = new Vector2(0, 1f);
-            float angle = Vector2.Angle(a, movedirection);
-            if (movedirection.x < 0)
-            {
-                angle *= -1f;
-            }
+        if (m_isMove == true)
+        {
+            transform.rotation = Quaternion.Lerp(Quaternion.Euler(0, m_nextRotation.eulerAngles.y + anglef, 0), transform.rotation, m_rotationLerp);
 
-            transform.rotation = Quaternion.Lerp(Quaternion.Euler(0, m_nextRotation.eulerAngles.y + angle, 0), transform.rotation, m_rotationLerp);
-
+            Move();
+        }
+        else if (m_isJump == true)
+        {
             Move();
         }
         else
