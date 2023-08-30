@@ -15,7 +15,7 @@ public class TreeChangeByTime : TimeInfluenced
 
     [Header("Time")]
     [SerializeField] private int m_startTime;
-    [SerializeField] private float m_moveTime = 0.5f;
+    [SerializeField] private float m_moveTime;
 
     [Header("IsChopped")]
     [SerializeField] private bool isChopped = false;
@@ -65,6 +65,7 @@ public class TreeChangeByTime : TimeInfluenced
 
     private void OnEnable()
     {
+        m_moveTime = TimeManager.s_Instance.m_skipTimeLength;
         SetStartTime(m_startTime);
     }
     #endregion

@@ -16,6 +16,8 @@ public class TimeManager : MonoBehaviour
             return s_instance;
         }
     }
+
+    public float m_skipTimeLength { private set; get; }
     public int m_timeCount;
     #endregion
     #region PrivateVariables
@@ -68,6 +70,8 @@ public class TimeManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        m_skipTimeLength = 0.5f;
     }
     #endregion
 }
