@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Switch
   - SwitchObject
-  - Tree
   layers:
   - Default
   - TransparentFX
