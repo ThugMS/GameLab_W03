@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 3791650346258343630}
   - component: {fileID: 3791650346258343631}
   - component: {fileID: 3791650346258343624}
-  - component: {fileID: 3791650346258343667}
+  - component: {fileID: 6580323088336206916}
   - component: {fileID: 8258084032338823372}
   m_Layer: 0
   m_Name: Player
@@ -150,7 +150,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &3791650346258343667
+--- !u!114 &6580323088336206916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,13 +165,13 @@ MonoBehaviour:
   m_time: 1
   m_followTransform: {fileID: 0}
   m_look: {x: 0, y: 0}
-  m_rotationPower: 20
+  m_rotationPower: 3
   m_isGamepad: 0
   m_isMouse: 0
   m_Direction: {x: 0, y: 0, z: 0}
   m_nextRotation: {x: 0, y: 0, z: 0, w: 1}
   m_rotationLerp: 0.8
-  m_rigidbody: {fileID: 3791650346258343624}
+  m_rigidbody: {fileID: 0}
   m_speed: 5
   m_isMove: 0
 --- !u!114 &8258084032338823372

@@ -7,9 +7,9 @@ public class SizeChangeByTime : TimeInfluenced
     #region PublicVariables
     #endregion
     #region PrivateVariables
-    [SerializeField] private GameObject m_sprout;
-    [SerializeField] private GameObject m_tree;
-    [SerializeField] private GameObject m_elderTree;
+    [SerializeField] private GameObject m_young;
+    [SerializeField] private GameObject m_youth;
+    [SerializeField] private GameObject m_elder;
 
     [SerializeField] private int m_startTime;
     #endregion
@@ -18,26 +18,24 @@ public class SizeChangeByTime : TimeInfluenced
     {
         DisableModels();
         if (m_objectTime <= 0)
-            EnableSprout();
+            EnableYoung();
         else if (m_objectTime == 1)
-            EnableTree();
+            EnableYouth();
         else if (m_objectTime >= 2)
-            EnableElderTree();
+            EnableElder();
     }
 
-    public void EnableSprout() => m_sprout.SetActive(true);
-    public void EnableTree() => m_tree.SetActive(true);
-    public void EnableElderTree() => m_elderTree.SetActive(true);
-    // 베는 애니메이션 넣기
-    public void Chop() => DisableModels();
+    public void EnableYoung() => m_young.SetActive(true);
+    public void EnableYouth() => m_youth.SetActive(true);
+    public void EnableElder() => m_elder.SetActive(true);
 
     #endregion
     #region PrivateMethod
     private void DisableModels()
     {
-        m_sprout.SetActive(false);
-        m_tree.SetActive(false);
-        m_elderTree.SetActive(false);
+        m_young.SetActive(false);
+        m_youth.SetActive(false);
+        m_elder.SetActive(false);
     }
 
     private void OnEnable()

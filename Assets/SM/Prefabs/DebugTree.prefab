@@ -144,9 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba316399aed91d4e8cf9a45e6077960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_sprout: {fileID: 1136368090280321547}
-  m_tree: {fileID: 1136368090714265285}
-  m_elderTree: {fileID: 1136368088927660908}
+  m_young: {fileID: 1136368090280321547}
+  m_youth: {fileID: 1136368090714265285}
+  m_elder: {fileID: 1136368088927660908}
   m_startTime: 0
 --- !u!1 &1136368090280321547
 GameObject:
