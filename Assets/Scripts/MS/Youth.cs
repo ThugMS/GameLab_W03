@@ -33,6 +33,8 @@ public class Youth : Player
     [Header("Axe")]
     [SerializeField] private GameObject m_axe;
     [SerializeField] private GameObject m_axePrefab;
+
+    private Tree m_targetTree;
     #endregion
 
     #region PublicMethod
@@ -150,7 +152,8 @@ public class Youth : Player
 
         if (m_collider.Length != 0)
         {
-           
+            m_collider[0].TryGetComponent(out m_targetTree);
+            m_targetTree.Chop();
         }
         else 
         {
