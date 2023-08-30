@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] protected float m_rotationPower = 3f;
     [SerializeField] protected bool m_isGamepad = false;
     [SerializeField] protected bool m_isMouse = false;
+    [SerializeField] protected float m_mouseSensitivity = 0.1f;
+    [SerializeField] protected float m_padSensitivity = 3f;
 
     [Header("Move")]
     [SerializeField] protected Vector3 m_Direction = Vector3.zero;
@@ -42,12 +44,12 @@ public class Player : MonoBehaviour
 
         if (m_isGamepad == true)
         {
-            m_rotationPower = 2;
+            m_rotationPower = m_padSensitivity;
         }
 
         if (m_isMouse == true)
         {
-            m_rotationPower = 1f;
+            m_rotationPower = m_mouseSensitivity;
         }
 
         m_look = _context.ReadValue<Vector2>();

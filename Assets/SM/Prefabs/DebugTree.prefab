@@ -107,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1136368089901298081}
   - component: {fileID: 1136368089901298082}
+  - component: {fileID: 7091395526178330489}
   m_Layer: 0
   m_Name: DebugTree
   m_TagString: Untagged
@@ -148,6 +149,18 @@ MonoBehaviour:
   m_youth: {fileID: 1136368090714265285}
   m_elder: {fileID: 1136368088927660908}
   m_startTime: 0
+--- !u!114 &7091395526178330489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136368089901298083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49fb5d3a9e3a85746a7fb5d36ddfbe4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1136368090280321547
 GameObject:
   m_ObjectHideFlags: 0
