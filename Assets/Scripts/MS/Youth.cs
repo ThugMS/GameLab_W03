@@ -35,6 +35,7 @@ public class Youth : Player
 
 
     private Tree m_targetTree;
+    private Door m_targetDoor;
 
     [Header("Key")]
     [SerializeField] private GameObject m_key;
@@ -197,6 +198,8 @@ public class Youth : Player
         if (m_collider.Length != 0)
         {
             Debug.Log("door open");
+            m_collider[0].TryGetComponent(out m_targetDoor);
+            m_targetDoor.InteractStart();
             m_key.SetActive(false);
         }
         else
