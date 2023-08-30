@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 8258084032338823372}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,6 +169,8 @@ MonoBehaviour:
   m_rotationPower: 3
   m_isGamepad: 0
   m_isMouse: 0
+  m_mouseSensitivity: 0.1
+  m_padSensitivity: 3
   m_Direction: {x: 0, y: 0, z: 0}
   m_nextRotation: {x: 0, y: 0, z: 0, w: 1}
   m_rotationLerp: 0.8
