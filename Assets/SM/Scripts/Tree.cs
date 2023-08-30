@@ -7,7 +7,7 @@ public class Tree : MonoBehaviour
 	#region PublicVariables
 	#endregion
 	#region PrivateVariables
-	private TimeInfluenced time;
+    [SerializeField] private TimeInfluenced time;
 	#endregion
 	#region PublicMethod
 
@@ -22,9 +22,5 @@ public class Tree : MonoBehaviour
 
     #endregion
     #region PrivateMethod
-    private void OnEnable()
-    {
-		TryGetComponent(out time);
-    }
     #endregion
 }
