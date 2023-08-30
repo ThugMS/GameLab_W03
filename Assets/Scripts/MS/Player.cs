@@ -205,7 +205,7 @@ public class Player : MonoBehaviour
     {
         if(m_isCeiling && m_isGround)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            LoadSceneManager.s_Instance.ChangeScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -248,7 +248,8 @@ public class Player : MonoBehaviour
     private void CheckHead()
     {
         Ray ray = new Ray(transform.position, Vector3.up);
-        if (Physics.Raycast(ray, 1.1f))
+        float rayLength = TimeManager.s_Instance.m_timeCount == 0 ? 0.4f : 0.6f;
+        if (Physics.Raycast(ray, rayLength))
         {
             m_isCeiling = true;
         }

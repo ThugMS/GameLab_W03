@@ -31,10 +31,7 @@ public abstract class TimeInfluenced : MonoBehaviour
 
 	public void SetStartTime(int _num)
 	{
-		for (int i = 0; i <= _num; i++)
-		{
-			PlusTime();
-		}
+		m_objectTime = _num;
 	}
 
 	public int GetObjectTIme()
