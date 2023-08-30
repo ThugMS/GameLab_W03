@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -55,7 +53,7 @@ public class Player : MonoBehaviour
         m_look = _context.ReadValue<Vector2>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if(m_Direction == Vector3.zero)
         {
@@ -63,7 +61,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         #region Camera
         {
@@ -89,31 +87,29 @@ public class Player : MonoBehaviour
         #endregion
 
         #region Move
-
+        
         if(m_isMove == true)
         {
-                m_nextRotation = Quaternion.Euler(new Vector3(0, m_nextRotation.eulerAngles.y, 0));
+            m_nextRotation = Quaternion.Euler(new Vector3(0, m_nextRotation.eulerAngles.y, 0));
 
-                Vector2 movedirection = new Vector2(m_Direction.x, m_Direction.z);
-                Vector2 a = new Vector2(0, 1f);
-                float angle = Vector2.Angle(a, movedirection);
-                if (movedirection.x < 0)
-                {
-                    angle *= -1f;
-                }
+            Vector2 movedirection = new Vector2(m_Direction.x, m_Direction.z);
+            Vector2 a = new Vector2(0, 1f);
+            float angle = Vector2.Angle(a, movedirection);
+            if (movedirection.x < 0)
+            {
+                angle *= -1f;
+            }
 
-                transform.rotation = Quaternion.Lerp(Quaternion.Euler(0, m_nextRotation.eulerAngles.y + angle, 0), transform.rotation, m_rotationLerp);
+            transform.rotation = Quaternion.Lerp(Quaternion.Euler(0, m_nextRotation.eulerAngles.y + angle, 0), transform.rotation, m_rotationLerp);
 
-                Move();   
+            Move();
         }
         else
         {
             m_rigidbody.angularVelocity = new Vector3(0, 0, 0);
-            m_rigidbody.velocity = Vector3.zero;
+            m_rigidbody.velocity = new Vector3(0, m_rigidbody.velocity.y, 0);
         }
         m_nextRotation = Quaternion.Lerp(m_followTransform.transform.rotation, m_nextRotation, m_rotationLerp);
-
-        
         #endregion
     }
 
@@ -122,6 +118,8 @@ public class Player : MonoBehaviour
         Vector3 moveAmout = transform.forward * m_speed * Time.deltaTime;
         Vector3 nextPosition = m_rigidbody.position + moveAmout;
         m_rigidbody.MovePosition(nextPosition);
+
+        
     }
     #endregion
 
@@ -135,7 +133,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-
             m_isGamepad = true;
             m_isMouse = false;
         }
