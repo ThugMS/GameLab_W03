@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -227,13 +226,14 @@ public class Youth : Player
 
     private void ReturnKey()
     {
-        Instantiate(m_keyPrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+        
+        Instantiate(m_keyPrefab, transform.position + transform.forward, Quaternion.identity);
         m_grabItem = ITEM.None;
     }
 
     private void ReturnAxe()
     {
-        Instantiate(m_axePrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+        Instantiate(m_axePrefab, transform.position + transform.forward, Quaternion.identity);
         m_grabItem = ITEM.None;
     }
 

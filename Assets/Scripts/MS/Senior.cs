@@ -109,10 +109,6 @@ public class Senior : Player
         if (m_collider.Length != 0)
         {   
             m_animator.SetTrigger("KeyTrigger");
-            m_collider[0].TryGetComponent(out m_targetDoor);
-            m_targetDoor.InteractStart();
-            m_key.SetActive(false);
-            m_grabItem = ITEM.None;
         }
         else
         {
@@ -121,9 +117,17 @@ public class Senior : Player
         }
     }
 
+    public void OpenDoor()
+    {
+        m_collider[0].TryGetComponent(out m_targetDoor);
+        m_key.SetActive(false);
+        m_targetDoor.InteractStart();
+        m_grabItem = ITEM.None;
+    }
+
     private void ReturnKey()
     {
-        Instantiate(m_keyPrefab, transform.position + new Vector3(0, 0, 3), Quaternion.identity);
+        Instantiate(m_keyPrefab, transform.position + transform.forward, Quaternion.identity);
         m_grabItem = ITEM.None;
     }
 
