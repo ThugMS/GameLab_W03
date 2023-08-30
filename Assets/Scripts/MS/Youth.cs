@@ -262,7 +262,6 @@ public class Youth : Player
         }
         else
         {
-            Debug.Log("yes");
             if (m_grabItem == ITEM.Key)
             {
                 m_key.SetActive(false);

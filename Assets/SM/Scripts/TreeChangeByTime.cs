@@ -15,7 +15,6 @@ public class TreeChangeByTime : TimeInfluenced
 
     [Header("Time")]
     [SerializeField] private int m_startTime;
-    [SerializeField] private float m_moveTime;
 
     [Header("IsChopped")]
     [SerializeField] private bool isChopped = false;
@@ -45,27 +44,26 @@ public class TreeChangeByTime : TimeInfluenced
     #region PrivateMethod
     private void EnableYoung()
     {
-        m_headTransform.DOScale(new Vector3(0f, 0f, 0f), m_moveTime);
-        m_bodyTransform.DOScaleY(0.1f, m_moveTime);
-        m_collisionTransform.DOLocalMove(new Vector3(0f, -5f, 0f), m_moveTime);
+        m_headTransform.DOScale(new Vector3(0f, 0f, 0f), TimeManager.s_Instance.m_skipTimeLength);
+        m_bodyTransform.DOScaleY(0.1f, TimeManager.s_Instance.m_skipTimeLength);
+        m_collisionTransform.DOLocalMove(new Vector3(0f, -5f, 0f), TimeManager.s_Instance.m_skipTimeLength);
     }
     private void EnableYouth()
     {
-        m_headTransform.DOLocalMoveY(3.5f, m_moveTime);
-        m_headTransform.DOScale(new Vector3(1f, 1f, 1f), m_moveTime);
-        m_bodyTransform.DOScaleY(1f, m_moveTime);
-        m_collisionTransform.DOLocalMove(new Vector3(0f, 0f, 0f), m_moveTime);
+        m_headTransform.DOLocalMoveY(3.5f, TimeManager.s_Instance.m_skipTimeLength);
+        m_headTransform.DOScale(new Vector3(1f, 1f, 1f), TimeManager.s_Instance.m_skipTimeLength);
+        m_bodyTransform.DOScaleY(1f, TimeManager.s_Instance.m_skipTimeLength);
+        m_collisionTransform.DOLocalMove(new Vector3(0f, 0f, 0f), TimeManager.s_Instance.m_skipTimeLength);
     }
     private void EnableElder()
     {
-        m_headTransform.DOLocalMoveY(7f, m_moveTime);
-        m_headTransform.DOScale(new Vector3(1.5f, 2f, 1.5f), m_moveTime);
-        m_collisionTransform.DOLocalMove(new Vector3(0f, 4.5f, 0f), m_moveTime);
+        m_headTransform.DOLocalMoveY(7f, TimeManager.s_Instance.m_skipTimeLength);
+        m_headTransform.DOScale(new Vector3(1.5f, 2f, 1.5f), TimeManager.s_Instance.m_skipTimeLength);
+        m_collisionTransform.DOLocalMove(new Vector3(0f, 4.5f, 0f), TimeManager.s_Instance.m_skipTimeLength);
     }
 
     private void OnEnable()
     {
-        m_moveTime = TimeManager.s_Instance.m_skipTimeLength;
         SetStartTime(m_startTime);
     }
     #endregion
