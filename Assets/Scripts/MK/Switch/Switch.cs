@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class Switch : MonoBehaviour
@@ -14,11 +15,13 @@ public class Switch : MonoBehaviour
     #endregion
 
     #region PublicMethod
-    public void TurnSwitch(bool isSwitchOn)
+    public void TurnSwitch()
     {
-        if(!m_isSwitchOn)
-        m_isSwitchOn = isSwitchOn;
-
+        if (!m_isSwitchOn)
+        {
+            m_isSwitchOn = true;
+        }
+        
         foreach (GameObject obj in switchObjects)
         {
             if (!obj.activeSelf)
