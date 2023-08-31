@@ -15,6 +15,12 @@ public class Baby : Player
     private void OnEnable()
     {
     }
+
+    private void OnDisable()
+    {
+        PlayerManager.instance.SetIsCeiling(m_isCeiling);
+        PlayerManager.instance.SetIsGround(m_isGround);
+    }
     #endregion
 
     #region PrivateMethod
