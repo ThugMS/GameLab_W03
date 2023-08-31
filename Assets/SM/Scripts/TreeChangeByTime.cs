@@ -52,7 +52,7 @@ public class TreeChangeByTime : TimeInfluenced
     {
         m_headTransform.DOLocalMoveY(3.5f, TimeManager.s_Instance.m_skipTimeLength);
         m_headTransform.DOScale(new Vector3(1f, 1f, 1f), TimeManager.s_Instance.m_skipTimeLength);
-        m_bodyTransform.DOScaleY(1f, TimeManager.s_Instance.m_skipTimeLength);
+        m_bodyTransform.DOScaleY(1.2f, TimeManager.s_Instance.m_skipTimeLength);
         m_collisionTransform.DOLocalMove(new Vector3(0f, 0f, 0f), TimeManager.s_Instance.m_skipTimeLength);
     }
     private void EnableElder()
