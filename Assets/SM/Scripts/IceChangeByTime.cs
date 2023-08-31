@@ -54,7 +54,8 @@ public class IceChangeByTime : TimeInfluenced
     }
 
     private void Start()
-    {
+    {   
+
         SetStartTime(m_startTime);
         UpdateTimeState();
     }
