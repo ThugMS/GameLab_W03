@@ -117,6 +117,8 @@ public class Youth : Player
     #region PrivateMethod
     public void CheckInteract()
     {
+        if (m_isDead) return;
+
         m_collider = CheckCollider();
 
         if(m_collider != null)
@@ -249,13 +251,16 @@ public class Youth : Player
 
     private void ReturnKey()
     {
-        
+        if (m_isDead) return;
+
         Instantiate(m_keyPrefab, transform.position + transform.forward, Quaternion.identity);
         m_grabItem = ITEM.None;
     }
 
     private void ReturnAxe()
     {
+        if (m_isDead) return;
+
         Instantiate(m_axePrefab, transform.position + transform.forward, Quaternion.identity);
         m_grabItem = ITEM.None;
     }

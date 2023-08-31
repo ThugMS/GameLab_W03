@@ -67,6 +67,8 @@ public class Senior : Player
     #region PrivateMethod
     public void CheckInteract()
     {
+        if (m_isDead) return;
+
         m_collider = CheckCollider();
 
         if (m_collider != null)
