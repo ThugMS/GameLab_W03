@@ -38,6 +38,10 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region PublicMethod
+    private void Awake()
+    {
+        Screen.SetResolution(1920, 1080, true);
+    }
     private void Start()
     {
         if(instance == null)
@@ -102,6 +106,20 @@ public class PlayerManager : MonoBehaviour
         m_seniorScript.m_stopMove = true;
 
         StartCoroutine(nameof(IE_StopMove), _time);
+    }
+
+    public void SetOnPanel()
+    {
+        m_babyScript.m_onPanel = true;
+        m_youthScript.m_onPanel = true;
+        m_seniorScript.m_onPanel = true;
+    }
+
+    public void SetOffPanel()
+    {
+        m_babyScript.m_onPanel = false;
+        m_youthScript.m_onPanel = false;
+        m_seniorScript.m_onPanel = false;
     }
 
     public void SetIsCeiling(bool _value)

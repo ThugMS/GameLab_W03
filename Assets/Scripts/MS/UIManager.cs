@@ -28,11 +28,12 @@ public class UIManager : MonoBehaviour
     {
         if(m_isPause == true) 
         {
-            Time.timeScale = 0f;
+
+            PlayerManager.instance.SetOnPanel();
         }
         else
         {
-            Time.timeScale = 1.0f;
+            PlayerManager.instance.SetOffPanel();
         }
     }
 

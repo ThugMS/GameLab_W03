@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public bool m_isUp = false;
     public bool m_stopMove = false;
     public bool m_isDead = false;
+    public bool m_onPanel = false;
     #endregion
 
     #region PrivateVariables
@@ -52,7 +53,7 @@ public class Player : MonoBehaviour
 
     public void OnMovement(InputAction.CallbackContext _context)
     {
-        if (m_stopMove == true)
+        if (m_stopMove == true || m_onPanel == true)
         {
             m_Direction = Vector3.zero;
             return;
@@ -75,6 +76,12 @@ public class Player : MonoBehaviour
     public void OnLook(InputAction.CallbackContext _context)
     {
         CheckInputType(_context.control.device.name);
+
+        if (m_onPanel == true)
+        {   
+            return;
+        }
+            
 
         if (m_isGamepad == true)
         {
@@ -106,6 +113,7 @@ public class Player : MonoBehaviour
         CeilingCheck();
 
         #region Camera
+        if(m_onPanel != true)
         {
             m_followTransform.transform.rotation *= Quaternion.AngleAxis(m_look.x * m_rotationPower, Vector3.up);
             m_followTransform.transform.rotation *= Quaternion.AngleAxis(-m_look.y * m_rotationPower, Vector3.right);
@@ -263,8 +271,12 @@ public class Player : MonoBehaviour
 
     private void CheckHead()
     {
+
+
+
+
         Ray ray = new Ray(transform.position, Vector3.up);
-        float rayLength = TimeManager.s_Instance.m_timeCount == 0 ? 0.4f : 0.6f;
+        float rayLength = TimeManager.s_Instance.GetCureentTime() == 0 ? 0.3f : 1.1f;
         if (Physics.Raycast(ray, rayLength))
         {
             m_isCeiling = true;
