@@ -102,6 +102,11 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region PrivateMethod
+    private void SetGravity(float _num)
+    {
+        Physics.gravity = new Vector3(Physics.gravity.x, 0f, Physics.gravity.z);
+    }
+
     private void OnSetting<T>(GameObject _obj, T _script) where T : Player
     {   
         if(m_item == ITEM.Key)
@@ -146,7 +151,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     private IEnumerator IE_StopMove(float _time)
-    {
+    { 
+
         yield return new WaitForSeconds(_time);
 
         m_babyScript.m_stopMove = false;
