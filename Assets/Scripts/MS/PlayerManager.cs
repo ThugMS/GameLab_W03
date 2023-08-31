@@ -38,6 +38,10 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region PublicMethod
+    private void Awake()
+    {
+        Screen.SetResolution(1920, 1080, true);
+    }
     private void Start()
     {
         if(instance == null)

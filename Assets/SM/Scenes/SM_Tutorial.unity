@@ -357,7 +357,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uC774\uB3D9: W,A,S,D (L\uC2A4\uD2F1)\n\uC2DC\uC810 \uC774\uB3D9: \uB9C8\uC6B0\uC2A4
-    (R\uC2A4\uD2F1)\n\uC810\uD504: Space \uD0A4 (X)\n\uC2DC\uAC04 \uC21C\uD589: E
+    (R\uC2A4\uD2F1)\n\uC810\uD504: Space \uD0A4 (A)\n\uC2DC\uAC04 \uC21C\uD589: E
     (R\uD2B8\uB9AC\uAC70)\n\uC2DC\uAC04 \uC5ED\uD589: Q (L\uD2B8\uB9AC\uAC70)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d7710a3d88d59a4f83b523e4998bd9a, type: 2}
@@ -4029,7 +4029,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.01, y: 5.95}
+  m_AnchoredPosition: {x: -8.22, y: 7.45}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1769719912
@@ -4052,7 +4052,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0C1\uD638\uC791\uC6A9: F"
+  m_text: "\uC0C1\uD638\uC791\uC6A9: F (B)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d7710a3d88d59a4f83b523e4998bd9a, type: 2}
   m_sharedMaterial: {fileID: -6247483991741111419, guid: 6d7710a3d88d59a4f83b523e4998bd9a, type: 2}
@@ -4481,7 +4481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1116117222405893019, guid: 61a9842cb7972954ab2a3ffeeccae8fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.06
+      value: 10.62
       objectReference: {fileID: 0}
     - target: {fileID: 1116117222405893019, guid: 61a9842cb7972954ab2a3ffeeccae8fb, type: 3}
       propertyPath: m_LocalPosition.z
