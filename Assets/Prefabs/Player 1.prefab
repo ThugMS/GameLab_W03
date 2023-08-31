@@ -149,6 +149,11 @@ MonoBehaviour:
   m_time: 1
   m_grabItem: 0
   m_isUp: 0
+  m_stopMove: 0
+  m_isDead: 0
+  m_isGround: 0
+  m_isCeiling: 0
+  m_isStucking: 0
   m_followTransform: {fileID: 0}
   m_look: {x: 0, y: 0}
   m_rotationPower: 3
@@ -164,7 +169,10 @@ MonoBehaviour:
   m_isMove: 0
   m_isJump: 0
   m_lastDir: {x: 0, y: 0}
-  m_isGround: 0
+  m_isFalling: 0
+  m_fallStartTime: 0
+  m_fallStartYPosition: 0
+  m_fallDeathHeight: 8
   m_jumpPower: 8
   m_gravityValue: 10
   m_isGrab: 0
@@ -193,6 +201,11 @@ MonoBehaviour:
   m_time: 1
   m_grabItem: 0
   m_isUp: 0
+  m_stopMove: 0
+  m_isDead: 0
+  m_isGround: 0
+  m_isCeiling: 0
+  m_isStucking: 0
   m_followTransform: {fileID: 0}
   m_look: {x: 0, y: 0}
   m_rotationPower: 3
@@ -208,6 +221,10 @@ MonoBehaviour:
   m_isMove: 0
   m_isJump: 0
   m_lastDir: {x: 0, y: 0}
+  m_isFalling: 0
+  m_fallStartTime: 0
+  m_fallStartYPosition: 0
+  m_fallDeathHeight: 8
 --- !u!114 &2075100694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +240,11 @@ MonoBehaviour:
   m_time: 1
   m_grabItem: 0
   m_isUp: 0
+  m_stopMove: 0
+  m_isDead: 0
+  m_isGround: 0
+  m_isCeiling: 0
+  m_isStucking: 0
   m_followTransform: {fileID: 0}
   m_look: {x: 0, y: 0}
   m_rotationPower: 3
@@ -238,6 +260,10 @@ MonoBehaviour:
   m_isMove: 0
   m_isJump: 0
   m_lastDir: {x: 0, y: 0}
+  m_isFalling: 0
+  m_fallStartTime: 0
+  m_fallStartYPosition: 0
+  m_fallDeathHeight: 8
   m_key: {fileID: 2732425860673358998}
   m_keyPrefab: {fileID: 3722240196858008801, guid: 61a9842cb7972954ab2a3ffeeccae8fb, type: 3}
   m_targetDoor: {fileID: 0}
@@ -544,7 +570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8298211005487125281, guid: 0ec919cef4c9207489aa46a3a1e2311e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8674771109876091291, guid: 0ec919cef4c9207489aa46a3a1e2311e, type: 3}
       propertyPath: m_RootOrder
@@ -631,7 +657,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2446537418030046106}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 133e4d35eba5230409b387eba552cbc6, type: 2}
   m_CullingMode: 0
@@ -793,7 +819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7606032425866249656, guid: 7ac8f1df84f82e44c900d7a02cb1a5fb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ac8f1df84f82e44c900d7a02cb1a5fb, type: 3}

@@ -104,6 +104,20 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(nameof(IE_StopMove), _time);
     }
 
+    public void SetOnPanel()
+    {
+        m_babyScript.m_onPanel = true;
+        m_youthScript.m_onPanel = true;
+        m_seniorScript.m_onPanel = true;
+    }
+
+    public void SetOffPanel()
+    {
+        m_babyScript.m_onPanel = false;
+        m_youthScript.m_onPanel = false;
+        m_seniorScript.m_onPanel = false;
+    }
+
     public void SetIsCeiling(bool _value)
     {
         m_isCeiling = _value;
