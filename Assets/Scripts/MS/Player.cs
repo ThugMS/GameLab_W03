@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public ITEM m_grabItem = ITEM.None;
     public bool m_isUp = false;
     public bool m_stopMove = false;
+    public bool m_isDead = false;
     #endregion
 
     #region PrivateVariables
@@ -255,6 +256,8 @@ public class Player : MonoBehaviour
 
     private void Death()
     {
+        m_isDead = true;
+        m_grabItem = ITEM.None;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
