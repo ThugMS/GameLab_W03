@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,9 +54,11 @@ public class IceChangeByTime : TimeInfluenced
     }
 
     private void Start()
-    {
+    {   
+
         SetStartTime(m_startTime);
         UpdateTimeState();
     }
 #endregion
 }
+
