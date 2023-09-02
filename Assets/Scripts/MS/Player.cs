@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -37,7 +38,9 @@ public class Player : MonoBehaviour
     [SerializeField] protected Quaternion m_nextRotation = Quaternion.identity;
     [SerializeField] protected float m_rotationLerp = 0.8f;
     [SerializeField] protected Rigidbody m_rigidbody;
-    [SerializeField] protected float m_speed = 5f;
+    [SerializeField] protected float m_maxSpeed = 5f;
+     protected float m_addSpeed = 0.5f;
+    [SerializeField] protected float m_curSpeed = 0f;
     [SerializeField] protected bool m_isMove = false;
     [SerializeField] protected bool m_isJump = false;
 
@@ -104,6 +107,7 @@ public class Player : MonoBehaviour
         if (m_lastDir == Vector2.zero)
         {
             m_isMove = false;
+            m_curSpeed = 0f;
         }
     }
 
@@ -186,12 +190,16 @@ public class Player : MonoBehaviour
     }
 
     protected virtual void Move()
-    {
-        Vector3 moveAmout = transform.forward * m_speed * Time.deltaTime;
-        Vector3 nextPosition = m_rigidbody.position + moveAmout;
-        m_rigidbody.MovePosition(nextPosition);
+    {   
+        if(m_curSpeed < m_maxSpeed)
+        {
+            m_curSpeed += m_addSpeed;
+        }
 
-        
+        Vector3 moveAmout = transform.forward * m_curSpeed * Time.deltaTime;
+        Vector3 nextPosition = m_rigidbody.position + moveAmout;
+
+        m_rigidbody.MovePosition(nextPosition);
     }
     #endregion
 
