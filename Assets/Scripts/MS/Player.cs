@@ -211,7 +211,6 @@ public class Player : MonoBehaviour
             m_isGround = false;
             m_isJump = true;
         }
-        Debug.Log(m_isGround);
     }
 
     private void CeilingCheck()
@@ -271,12 +270,10 @@ public class Player : MonoBehaviour
 
     private void CheckHead()
     {
-
-
-
-
         Ray ray = new Ray(transform.position, Vector3.up);
-        float rayLength = TimeManager.s_Instance.GetCureentTime() == 0 ? 0.3f : 1.1f;
+        float rayLength = (TimeManager.s_Instance.GetCureentTime() == 0 ? 0.45f : 1.1f);
+        Debug.Log(rayLength);
+        Debug.DrawRay(ray.origin, ray.direction, Color.blue,rayLength);
         if (Physics.Raycast(ray, rayLength))
         {
             m_isCeiling = true;
