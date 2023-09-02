@@ -1,9 +1,11 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class Player : MonoBehaviour, IBurn
 {
@@ -36,7 +38,9 @@ public class Player : MonoBehaviour, IBurn
     [SerializeField] protected Quaternion m_nextRotation = Quaternion.identity;
     [SerializeField] protected float m_rotationLerp = 0.8f;
     [SerializeField] protected Rigidbody m_rigidbody;
-    [SerializeField] protected float m_speed = 5f;
+    [SerializeField] protected float m_maxSpeed = 5f;
+     protected float m_addSpeed = 0.5f;
+    [SerializeField] protected float m_curSpeed = 0f;
     [SerializeField] protected bool m_isMove = false;
     [SerializeField] protected bool m_isJump = false;
 
@@ -58,8 +62,10 @@ public class Player : MonoBehaviour, IBurn
     }
     public void OnMovement(InputAction.CallbackContext _context)
     {
+
         if (m_stopMove == true || m_onPanel == true)
         {
+            m_lastDir = m_Direction;
             m_Direction = Vector3.zero;
             return;
         }
@@ -106,8 +112,8 @@ public class Player : MonoBehaviour, IBurn
         if (m_lastDir == Vector2.zero)
         {
             m_isMove = false;
+            m_curSpeed = 0f;
         }
-
     }
 
     protected virtual void FixedUpdate()
@@ -116,6 +122,11 @@ public class Player : MonoBehaviour, IBurn
         CheckGround();
         CheckHead();
         CeilingCheck();
+
+        if(m_stopMove == true)
+        {
+            m_Direction = new Vector3(0f, m_Direction.y, 0f);
+        }
 
         #region Camera
         if(m_onPanel != true)
@@ -177,13 +188,23 @@ public class Player : MonoBehaviour, IBurn
         #endregion
     }
 
-    protected virtual void Move()
+    public void SetStopMoveFalse()
     {
-        Vector3 moveAmout = transform.forward * m_speed * Time.deltaTime;
-        Vector3 nextPosition = m_rigidbody.position + moveAmout;
-        m_rigidbody.MovePosition(nextPosition);
+        m_Direction = m_lastDir;
+        m_stopMove = false;
+    }
 
-        
+    protected virtual void Move()
+    {   
+        if(m_curSpeed < m_maxSpeed)
+        {
+            m_curSpeed += m_addSpeed;
+        }
+
+        Vector3 moveAmout = transform.forward * m_curSpeed * Time.deltaTime;
+        Vector3 nextPosition = m_rigidbody.position + moveAmout;
+
+        m_rigidbody.MovePosition(nextPosition);
     }
     #endregion
 
