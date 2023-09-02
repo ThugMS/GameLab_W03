@@ -11,6 +11,7 @@ public class Switch : MonoBehaviour
     [SerializeField] private bool m_isSwitchOn = false;
     [SerializeField] private GameObject m_switchObject;
     [SerializeField] private List<GameObject> switchObjects = new List<GameObject>();
+    [SerializeField] private Animator m_animator;
     #endregion
 
     #region PublicMethod
@@ -32,6 +33,8 @@ public class Switch : MonoBehaviour
                 obj.GetComponent<ISwitchConnectedObjects>().InteractStart();
             }
         }
+
+        m_animator.SetTrigger("Pressed");
     }
     #endregion
 
