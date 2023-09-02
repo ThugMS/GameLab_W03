@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class IceChangeByTime : TimeInfluenced
+public class IceChangeByTime : TimeInfluenced, IBurn
 {
     #region PublicVariables
     #endregion
@@ -26,6 +26,11 @@ public class IceChangeByTime : TimeInfluenced
             EnableYouth();
         else if (GetObjectTIme() >= 2)
             EnableElder();
+    }
+    public void Burn()
+    {
+        // 임시 연소
+        transform.parent.gameObject.SetActive(false);
     }
 
     #endregion
@@ -55,7 +60,6 @@ public class IceChangeByTime : TimeInfluenced
 
     private void Start()
     {   
-
         SetStartTime(m_startTime);
         UpdateTimeState();
     }
