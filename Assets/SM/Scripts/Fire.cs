@@ -14,12 +14,15 @@ public class Fire : MonoBehaviour
     #region PrivateMethod
     private void OnCollisionEnter(Collision collision)
     {
-        // collision으로 처리할지 좌표값 정리해서 지울지 의논할 것!
         IBurn burnCheck;
         collision.gameObject.TryGetComponent(out burnCheck);
         if (burnCheck != null)
         {
             burnCheck.Burn();
+        }
+        else if(collision.gameObject.layer == 3)
+        { 
+            this.gameObject.SetActive(false);
         }
     }
     #endregion
