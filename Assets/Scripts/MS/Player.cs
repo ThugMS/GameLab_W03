@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using System.Runtime.CompilerServices;
 
 public class Player : MonoBehaviour
 {
@@ -104,11 +105,7 @@ public class Player : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (m_lastDir == Vector2.zero)
-        {
-            m_isMove = false;
-            m_curSpeed = 0f;
-        }
+        
     }
 
     protected virtual void FixedUpdate()
@@ -118,7 +115,13 @@ public class Player : MonoBehaviour
         CheckHead();
         CeilingCheck();
 
-        if(m_stopMove == true)
+        if (m_lastDir == Vector2.zero)
+        {
+            m_isMove = false;
+            Move(-1);
+        }
+
+        if (m_stopMove == true)
         {
             m_Direction = new Vector3(0f, m_Direction.y, 0f);
         }
@@ -168,11 +171,11 @@ public class Player : MonoBehaviour
         if (m_isMove == true)
         {
             transform.rotation = Quaternion.Lerp(Quaternion.Euler(0, m_nextRotation.eulerAngles.y + anglef, 0), transform.rotation, m_rotationLerp);
-            Move();
+            Move(1);
         }
         else if (m_isJump == true)
         {
-            Move();
+            Move(1);
         }
         else
         {
@@ -189,21 +192,37 @@ public class Player : MonoBehaviour
         m_stopMove = false;
     }
 
-    protected virtual void Move()
+    protected virtual void Move(float _arrow)
     {   
-        if(m_curSpeed < m_maxSpeed)
-        {
-            m_curSpeed += m_addSpeed;
+        if(m_curSpeed <= m_maxSpeed)
+        {   
+            if(_arrow < 0)
+            {
+                m_curSpeed -= 0.5f;
+            }
+            else
+            {
+                m_curSpeed += m_addSpeed;
+            }
         }
 
-        Vector3 moveAmout = transform.forward * m_curSpeed * Time.deltaTime;
-        Vector3 nextPosition = m_rigidbody.position + moveAmout;
+        if (m_curSpeed < 0f)
+            m_curSpeed = 0f;
+
+        if (m_curSpeed > m_maxSpeed)
+            m_curSpeed = m_maxSpeed;
+
+        Vector3 moveAmount = transform.forward * m_curSpeed * Time.deltaTime;
+        Vector3 nextPosition = m_rigidbody.position + moveAmount;
+
+        Debug.Log(Time.deltaTime);
 
         m_rigidbody.MovePosition(nextPosition);
+        
     }
     #endregion
 
-    #region PrivateMethod
+    #region PrivateMethod   
     private void CheckInputType(string _type)
     {
         if (_type == "Mouse")
