@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,8 +54,10 @@ public class Player : MonoBehaviour
 
     public void OnMovement(InputAction.CallbackContext _context)
     {
+
         if (m_stopMove == true || m_onPanel == true)
         {
+            m_lastDir = m_Direction;
             m_Direction = Vector3.zero;
             return;
         }
@@ -102,7 +105,6 @@ public class Player : MonoBehaviour
         {
             m_isMove = false;
         }
-
     }
 
     protected virtual void FixedUpdate()
@@ -111,6 +113,11 @@ public class Player : MonoBehaviour
         CheckGround();
         CheckHead();
         CeilingCheck();
+
+        if(m_stopMove == true)
+        {
+            m_Direction = new Vector3(0f, m_Direction.y, 0f);
+        }
 
         #region Camera
         if(m_onPanel != true)
@@ -170,6 +177,12 @@ public class Player : MonoBehaviour
         }
         m_nextRotation = Quaternion.Lerp(m_followTransform.transform.rotation, m_nextRotation, m_rotationLerp);
         #endregion
+    }
+
+    public void SetStopMoveFalse()
+    {
+        m_Direction = m_lastDir;
+        m_stopMove = false;
     }
 
     protected virtual void Move()
@@ -272,8 +285,7 @@ public class Player : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, Vector3.up);
         float rayLength = (TimeManager.s_Instance.GetCureentTime() == 0 ? 0.45f : 1.1f);
-        Debug.Log(rayLength);
-        Debug.DrawRay(ray.origin, ray.direction, Color.blue,rayLength);
+
         if (Physics.Raycast(ray, rayLength))
         {
             m_isCeiling = true;
