@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using System.Runtime.CompilerServices;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IBurn
 {
     #region PublicVariables
     public int m_time = 1;
@@ -54,8 +54,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float m_fallDeathHeight = 8f;
     #endregion
 
-    #region PublicMetho
+    #region PublicMethod
 
+
+    public void Burn()
+    {
+        Death();
+    }
     public void OnMovement(InputAction.CallbackContext _context)
     {
 
@@ -312,7 +317,6 @@ public class Player : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, Vector3.up);
         float rayLength = (TimeManager.s_Instance.GetCureentTime() == 0 ? 0.45f : 1.1f);
-
         if (Physics.Raycast(ray, rayLength))
         {
             m_isCeiling = true;
