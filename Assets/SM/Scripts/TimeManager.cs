@@ -24,7 +24,8 @@ public class TimeManager : MonoBehaviour
 
     private static TimeManager s_instance;
 
-    private List<TimeInfluenced> m_levelObjects;
+    [SerializeField]
+    private List<TimeInfluenced> m_levelObjects = new List<TimeInfluenced>();
     #endregion
     #region PublicMethod
 
@@ -51,6 +52,15 @@ public class TimeManager : MonoBehaviour
         PlayerManager.instance.ChangeType(m_timeCount);
         PlayerManager.instance.StopMove(m_skipTimeLength);
         CameraShakeTrigger.instance.ShakeCamera(2, m_skipTimeLength);
+    }
+
+    public void AddObject(TimeInfluenced _obj)
+    {
+        m_levelObjects.Add(_obj);
+    }
+    public void RemoveObject(TimeInfluenced _obj)
+    {
+        m_levelObjects.Remove(_obj);
     }
 
     public void GetObjects(List<TimeInfluenced> _objects)

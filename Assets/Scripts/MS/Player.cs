@@ -293,7 +293,6 @@ public class Player : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, Vector3.up);
         float rayLength = (TimeManager.s_Instance.GetCureentTime() == 0 ? 0.45f : 1.1f);
-
         if (Physics.Raycast(ray, rayLength))
         {
             m_isCeiling = true;

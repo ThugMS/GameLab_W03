@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class TreeChangeByTime : TimeInfluenced
+public class TreeChangeByTime : TimeInfluenced, IBurn
 {
     #region PublicVariables
     #endregion
@@ -38,6 +38,12 @@ public class TreeChangeByTime : TimeInfluenced
         EnableYoung();
         isChopped = true;
         return true;
+    }
+
+    public void Burn()
+    {
+        // 임시 연소
+        transform.parent.gameObject.SetActive(false);
     }
 
     #endregion
