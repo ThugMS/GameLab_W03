@@ -38,7 +38,7 @@ public class Door : MonoBehaviour, ISwitchConnectedObjects
 
     private void RotateDoor()
     {
-        Tween tween = m_door.DORotate(new Vector3(0f, 100f, 0f), 2.0f);
+        Tween tween = m_door.DOLocalRotate(new Vector3(0f, 100f, 0f), 2.0f);
         tween.WaitForCompletion();
         m_isSwitchConnected = true;
     }
