@@ -189,9 +189,9 @@ public class PlayerManager : MonoBehaviour
 
         yield return new WaitForSeconds(_time);
 
-        m_babyScript.m_stopMove = false;
-        m_youthScript.m_stopMove = false;
-        m_seniorScript.m_stopMove = false;
+        m_babyScript.SetStopMoveFalse();
+        m_youthScript.SetStopMoveFalse();
+        m_seniorScript.SetStopMoveFalse();
     }
     #endregion
 }
