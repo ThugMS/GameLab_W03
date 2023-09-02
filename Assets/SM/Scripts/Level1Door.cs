@@ -16,6 +16,7 @@ public class Level1Door : MonoBehaviour, ISwitchConnectedObjects
         if (isInteracted)
             return;
         isInteracted = true;
+        transform.DOScaleY(transform.localScale.y - 0.3f, TimeManager.s_Instance.m_skipTimeLength);
         transform.DOLocalMoveY(transform.localPosition.y + 1.5f, TimeManager.s_Instance.m_skipTimeLength);
     }
     #endregion
