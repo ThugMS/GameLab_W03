@@ -52,7 +52,8 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
     {
         m_headTransform.DOScale(new Vector3(0f, 0f, 0f), TimeManager.s_Instance.m_skipTimeLength);
         m_bodyTransform.DOScaleY(0.1f, TimeManager.s_Instance.m_skipTimeLength);
-        m_collisionTransform.DOLocalMove(new Vector3(0f, -5f, 0f), TimeManager.s_Instance.m_skipTimeLength);
+        m_collisionTransform.DOLocalMove(new Vector3(0f, -2.5f, 0f), TimeManager.s_Instance.m_skipTimeLength);
+        m_collisionTransform.DOScaleY(5f, TimeManager.s_Instance.m_skipTimeLength);
     }
     private void EnableYouth()
     {
@@ -60,6 +61,7 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
         m_headTransform.DOScale(new Vector3(1f, 1f, 1f), TimeManager.s_Instance.m_skipTimeLength);
         m_bodyTransform.DOScaleY(1.2f, TimeManager.s_Instance.m_skipTimeLength);
         m_collisionTransform.DOLocalMove(new Vector3(0f, 0f, 0f), TimeManager.s_Instance.m_skipTimeLength);
+        m_collisionTransform.DOScaleY(10f, TimeManager.s_Instance.m_skipTimeLength);
     }
     private void EnableElder()
     {
