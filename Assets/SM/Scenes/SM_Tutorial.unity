@@ -6659,7 +6659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5219130115023891853, guid: af647ca60c3f21a42baa6ad1d754ca9d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -6.55
       objectReference: {fileID: 0}
     - target: {fileID: 5219130115023891853, guid: af647ca60c3f21a42baa6ad1d754ca9d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12033,6 +12033,10 @@ PrefabInstance:
     - target: {fileID: 6256568694015322598, guid: 39c268050eb9e8b44bb506ee3a082776, type: 3}
       propertyPath: m_Name
       value: ObjectManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256568694015322598, guid: 39c268050eb9e8b44bb506ee3a082776, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6256568694015322599, guid: 39c268050eb9e8b44bb506ee3a082776, type: 3}
       propertyPath: levelObjects.Array.size

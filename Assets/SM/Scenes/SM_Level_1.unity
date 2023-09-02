@@ -4579,6 +4579,7 @@ MonoBehaviour:
   m_switchObject: {fileID: 0}
   switchObjects:
   - {fileID: 1484573537}
+  m_animator: {fileID: 4380074088617889310}
 --- !u!65 &1064285710192846683
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4767,6 +4768,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4063802735533382723}
+  - component: {fileID: 4380074088617889310}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -4774,6 +4776,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &4380074088617889310
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4380074088617889309}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b0575af38745ab348a5d43136fe86720, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &4770232541160089467
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5249,6 +5272,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6256568694015322599, guid: 39c268050eb9e8b44bb506ee3a082776, type: 3}
+      propertyPath: m_LevelObjects.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256568694015322599, guid: 39c268050eb9e8b44bb506ee3a082776, type: 3}
       propertyPath: levelObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1456862611}
@@ -5272,6 +5299,26 @@ PrefabInstance:
       propertyPath: levelObjects.Array.data[5]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6256568694015322599, guid: 39c268050eb9e8b44bb506ee3a082776, type: 3}
+      propertyPath: m_LevelObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1456862611}
+    - target: {fileID: 6256568694015322599, guid: 39c268050eb9e8b44bb506ee3a082776, type: 3}
+      propertyPath: m_LevelObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 81914227}
+    - target: {fileID: 6256568694015322599, guid: 39c268050eb9e8b44bb506ee3a082776, type: 3}
+      propertyPath: m_LevelObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1249239507}
+    - target: {fileID: 6256568694015322599, guid: 39c268050eb9e8b44bb506ee3a082776, type: 3}
+      propertyPath: m_LevelObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 1249244944}
+    - target: {fileID: 6256568694015322599, guid: 39c268050eb9e8b44bb506ee3a082776, type: 3}
+      propertyPath: m_LevelObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 1236274760}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39c268050eb9e8b44bb506ee3a082776, type: 3}
 --- !u!4 &8019742077060180588

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public enum ITEM
 {
-    None, Axe, Key
+    None, Axe, Key, Torch
 }
 
 public class Youth : Player
@@ -38,6 +38,10 @@ public class Youth : Player
     [SerializeField] public GameObject m_key;
     [SerializeField] private GameObject m_keyPrefab;
     [SerializeField] private Door m_targetDoor;
+
+    [Header("Torch")]
+    [SerializeField] private GameObject m_torch;
+    [SerializeField] private GameObject m_torchPrefab;
 
 
     [Header("Animation")]
@@ -100,21 +104,24 @@ public class Youth : Player
 
         if (_context.started)
         {
-            if (m_grabItem == ITEM.None)
+            switch (m_grabItem)
             {
-                CheckInteract();
-            }
-            else if (m_grabItem == ITEM.Axe)
-            {
-                AxeAction();
-            }
-            else if (m_grabItem == ITEM.Key)
-            {
-                KeyAction();
+                case ITEM.None:
+                    CheckInteract();
+                    break;
+                case ITEM.Axe:
+                    AxeAction();
+                    break;
+                case ITEM.Key:
+                    KeyAction();
+                    break;
+                case ITEM.Torch:
+                    TorchAction();
+                    break;
             }
         }
     }
-        #endregion
+    #endregion
 
     #region PrivateMethod
     public void CheckInteract()
@@ -133,20 +140,26 @@ public class Youth : Player
                     
                 }
 
-                if (m_collider[i].gameObject.layer == LayerMask.NameToLayer("Axe"))
+                switch (m_collider[i].gameObject.layer)
                 {
-                    Destroy(m_collider[i].gameObject);
-                    m_axe.SetActive(true);
-                    m_grabItem = ITEM.Axe;
-                    break;
-                }
-
-                if (m_collider[i].gameObject.layer == LayerMask.NameToLayer("Key"))
-                {
-                    m_collider[i].gameObject.SetActive(false);
-                    m_key.SetActive(true);
-                    m_grabItem = ITEM.Key;
-                    break;
+                    // Axe
+                    case 6:
+                        Destroy(m_collider[i].gameObject);
+                        m_axe.SetActive(true);
+                        m_grabItem = ITEM.Axe;
+                        break;
+                    // Key
+                    case 8:
+                        m_collider[i].gameObject.SetActive(false);
+                        m_key.SetActive(true);
+                        m_grabItem = ITEM.Key;
+                        break;
+                    // Torch
+                    case 12:
+                        m_collider[i].gameObject.SetActive(false);
+                        m_torch.SetActive(true);
+                        m_grabItem = ITEM.Torch;
+                        break;
                 }
             }
         }
@@ -249,6 +262,11 @@ public class Youth : Player
         m_key.SetActive(false);
         m_targetDoor.InteractStart();
         m_grabItem = ITEM.None;
+    }
+
+    private void TorchAction()
+    {
+        
     }
 
     private void ReturnKey()

@@ -220,8 +220,6 @@ public class Player : MonoBehaviour, IBurn
         Vector3 moveAmount = transform.forward * m_curSpeed * Time.deltaTime;
         Vector3 nextPosition = m_rigidbody.position + moveAmount;
 
-        Debug.Log(Time.deltaTime);
-
         m_rigidbody.MovePosition(nextPosition);
         
     }

@@ -25,7 +25,7 @@ public class PlayerControlTime : MonoBehaviour
 			if (timeCount < 1)
 				return;
 			TimeManager.s_Instance.MinusTIme();
-			Invoke(nameof(EnableChangeTime), TimeManager.s_Instance.m_skipTimeLength);
+			StartCoroutine(nameof(IE_EnableChangingTime));
 		}
 	}
 
@@ -40,15 +40,16 @@ public class PlayerControlTime : MonoBehaviour
 			if (timeCount > 1)
 				return;
 			TimeManager.s_Instance.PlusTime();
-			Invoke(nameof(EnableChangeTime), TimeManager.s_Instance.m_skipTimeLength);
+			StartCoroutine(nameof(IE_EnableChangingTime));
 		}
 	}
 
 
 	#endregion
 	#region PrivateMethod
-	private void EnableChangeTime()
+	IEnumerator IE_EnableChangingTime()
 	{
+		yield return new WaitForSeconds(TimeManager.s_Instance.m_skipTimeLength);
 		isChangingTime = false;
 	}
     #endregion
