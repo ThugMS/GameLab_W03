@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IBurn
 {
     #region PublicVariables
     public int m_time = 1;
@@ -49,8 +49,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float m_fallDeathHeight = 8f;
     #endregion
 
-    #region PublicMetho
+    #region PublicMethod
 
+
+    public void Burn()
+    {
+        Death();
+    }
     public void OnMovement(InputAction.CallbackContext _context)
     {
         if (m_stopMove == true || m_onPanel == true)
