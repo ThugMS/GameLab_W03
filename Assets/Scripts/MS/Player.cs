@@ -64,6 +64,23 @@ public class Player : MonoBehaviour, IBurn
     {
         Death();
     }
+
+    public virtual void OnChange()
+    {
+        if (m_grabItem == ITEM.Key && TimeManager.s_Instance.GetCureentTime() != 0)
+        {
+            PlayerManager.instance.m_item = ITEM.Key;
+        }
+        ResetSetting();
+        PlayerManager.instance.SetIsCeiling(m_isCeiling);
+        PlayerManager.instance.SetIsGround(m_isGround);
+    }
+
+    public virtual void ResetSetting()
+    {
+        
+    }
+
     public void OnMovement(InputAction.CallbackContext _context)
     {
 

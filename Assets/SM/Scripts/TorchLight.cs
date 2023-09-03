@@ -55,7 +55,7 @@ public class TorchLight : MonoBehaviour
             {
                 float roundedX = (Mathf.Round(hit.point.x / 5f)) * 5f + 2.5f;
                 float roundedY = (Mathf.Round(hit.point.y / 5f)) * 5f;
-                float roundedZ = (Mathf.Round(hit.point.z / 5f)) * 5f;
+                float roundedZ = (Mathf.Round(hit.point.z / 5f)) * 5f + 2.5f;
 
                 Debug.Log(roundedY);
 

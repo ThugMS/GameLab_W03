@@ -64,11 +64,9 @@ public class Youth : Player
         m_isUp = false;
     }
 
-    private void OnDisable()
+    public override void OnChange()
     {
-        ResetSetting();
-        PlayerManager.instance.SetIsCeiling(m_isCeiling);
-        PlayerManager.instance.SetIsGround(m_isGround);
+        base.OnChange();
         m_isUp = false;
     }
 
@@ -116,18 +114,39 @@ public class Youth : Player
             }
         }
     }
-    #endregion
-
-    #region PrivateMethod
-    public void CheckInteract()
+    public override void ResetSetting()
     {
+        //  시간이 올라간다
+        switch (m_grabItem)
+        {
+            case ITEM.Axe:
+                m_axe.SetActive(false);
+                ReturnItem(m_axePrefab);
+                break;
+            case ITEM.Key:
+                m_key.SetActive(false);
+                if (m_isUp == true)
+                    break;
+                ReturnItem(m_keyPrefab);
+                break;
+            case ITEM.Torch:
+                m_torch.SetActive(false);
+                ReturnItem(m_torchPrefab);
+                break;
+        }
+    }
+        #endregion
+
+        #region PrivateMethod
+        public void CheckInteract()
+        {
         if (m_isDead) return;
 
         m_collider = CheckCollider();
 
         if(m_collider != null)
         {   
-              for(int i=0;i< m_collider.Length;i++)
+             for(int i=0;i< m_collider.Length;i++)
             {
                 if (m_collider[i].tag == "Switch")
                 {
@@ -308,26 +327,6 @@ public class Youth : Player
     }
     */
 
-    private void ResetSetting()
-    {
-        //  시간이 올라간다
-        switch (m_grabItem)
-        {
-            case ITEM.Axe:
-                m_axe.SetActive(false);
-                ReturnItem(m_axePrefab);
-                break;
-            case ITEM.Key:
-                m_key.SetActive(false);
-                if (m_isUp == true)
-                    break;
-                ReturnItem(m_keyPrefab);
-                break;
-            case ITEM.Torch:
-                m_torch.SetActive(false);
-                ReturnItem(m_torchPrefab);
-                break;
-        }
         
         /* Refactoring
         if (m_grabItem == ITEM.Axe)
@@ -351,6 +350,5 @@ public class Youth : Player
             }
         }
         */
-    }
     #endregion
 }
