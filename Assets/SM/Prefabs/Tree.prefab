@@ -95,7 +95,13 @@ MonoBehaviour:
   m_headTransform: {fileID: 3366545093293874892}
   m_bodyTransform: {fileID: 3366545091845659743}
   m_collisionTransform: {fileID: 2968689717428244557}
-  m_startTime: 1
+  m_treeColors:
+  - {r: 0.16019939, g: 0.754717, b: 0.17381433, a: 1}
+  - {r: 0.08993414, g: 0.4433962, b: 0.097074755, a: 1}
+  - {r: 0.4056604, g: 0.20551683, b: 0.19708973, a: 1}
+  m_nowColor: {r: 0, g: 0, b: 0, a: 0}
+  m_renderer: {fileID: 0}
+  m_startTime: 2
   isChopped: 0
 --- !u!1001 &2968689716639103271
 PrefabInstance:
@@ -163,7 +169,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 782b35bb8b3f072479a36cf3fd51b01a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 16a6d96f073f0f941b9ce55635b4ffb6, type: 3}
+      objectReference: {fileID: 2100000, guid: 43125706e831d56459b4ee570dc29333, type: 2}
     - target: {fileID: 919132149155446097, guid: 782b35bb8b3f072479a36cf3fd51b01a, type: 3}
       propertyPath: m_Name
       value: TreeHead
@@ -174,6 +180,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 782b35bb8b3f072479a36cf3fd51b01a, type: 3}
+--- !u!1 &2734685806096401526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 782b35bb8b3f072479a36cf3fd51b01a, type: 3}
+  m_PrefabInstance: {fileID: 2968689716639103271}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1894790932285781903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734685806096401526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 659dc90cd8dcdd645acb71baeefe2d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  duration: 2
+  renderer: {fileID: 0}
+  TreeColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &3366545093293874892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 782b35bb8b3f072479a36cf3fd51b01a, type: 3}
