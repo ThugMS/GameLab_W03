@@ -246,16 +246,17 @@ public class Player : MonoBehaviour, IBurn
     private void CheckGround()
     {
         Ray ray = new Ray(transform.position, Vector3.down);
-        //1 << LayerMask.NameToLayer("Ground")
+
         if (Physics.Raycast(ray, 1.1f))
-        {
+        {   
+
             m_isGround = true;
             m_isJump = false;
         }
         else
         {
-            m_isGround = false;
-            m_isJump = true;
+
+            StartCoroutine(nameof(IE_CheckIsGround));
         }
     }
 
@@ -329,6 +330,12 @@ public class Player : MonoBehaviour, IBurn
         }
     }
 
+    private IEnumerator IE_CheckIsGround()
+    {
+        yield return new WaitForSeconds(0.2f);
 
+        m_isGround = false;
+        m_isJump = true;
+    }
     #endregion
 }
