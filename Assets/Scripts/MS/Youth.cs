@@ -55,9 +55,6 @@ public class Youth : Player
         ApplyGravity();
     }
 
-    
-
-
     private void OnEnable()
     {
         if (m_grabItem == ITEM.Key)
@@ -73,7 +70,6 @@ public class Youth : Player
         ResetSetting();
         PlayerManager.instance.SetIsCeiling(m_isCeiling);
         PlayerManager.instance.SetIsGround(m_isGround);
-
         m_isUp = false;
     }
 
@@ -234,7 +230,7 @@ public class Youth : Player
         else 
         {
             m_axe.SetActive(false);
-            ReturnAxe();
+            ReturnItem(m_axePrefab);
         }
 
     }
@@ -251,7 +247,7 @@ public class Youth : Player
         else
         {
             m_key.SetActive(false);
-            ReturnKey();
+            ReturnItem(m_keyPrefab);
         }
 
     }
@@ -266,15 +262,35 @@ public class Youth : Player
 
     private void TorchAction()
     {
-        
+        TorchLight torchLight;
+        m_torch.TryGetComponent(out torchLight);
+        if (!torchLight.SetFire())
+        {
+            ReturnItem(m_torchPrefab);
+        }
+        else
+        {
+            m_grabItem = ITEM.None;
+        }
+        m_torch.SetActive(false);
     }
 
+    private void ReturnItem(GameObject _prefab)
+    {
+        if (m_isDead)
+            return;
+        Instantiate(_prefab, transform.position + transform.forward, Quaternion.identity);
+        _prefab.SetActive(true);
+        m_grabItem = ITEM.None;
+    }
+
+    /*
     private void ReturnKey()
     {
         if (m_isDead) return;
 
         Instantiate(m_keyPrefab, transform.position + transform.forward, Quaternion.identity);
-        m_grabItem = ITEM.None;
+        //m_grabItem = ITEM.None;
     }
 
     private void ReturnAxe()
@@ -282,18 +298,46 @@ public class Youth : Player
         if (m_isDead) return;
 
         Instantiate(m_axePrefab, transform.position + transform.forward, Quaternion.identity);
-        m_grabItem = ITEM.None;
+        //m_grabItem = ITEM.None;
     }
+    private void ReturnTorch()
+    {
+        if (m_isDead) return;
+
+        Instantiate(m_torchPrefab, transform.position + transform.forward, Quaternion.identity);
+        //m_grabItem = ITEM.None;
+    }
+    */
 
     private void ResetSetting()
     {
+        //  시간이 올라간다
+        switch (m_grabItem)
+        {
+            case ITEM.Axe:
+                m_axe.SetActive(false);
+                ReturnItem(m_axePrefab);
+                break;
+            case ITEM.Key:
+                m_key.SetActive(false);
+                if (m_isUp == true)
+                    break;
+                ReturnItem(m_keyPrefab);
+                break;
+            case ITEM.Torch:
+                m_torch.SetActive(false);
+                ReturnItem(m_torchPrefab);
+                break;
+        }
+        
+        /* Refactoring
         if (m_grabItem == ITEM.Axe)
         {
             m_axe.SetActive(false);
             ReturnAxe();
         }
 
-        if(m_isUp == true)
+        if(m_isUp == true) 이게 뭐임? : 시간이 올라간다
         {
             m_key.SetActive(false);
             m_grabItem = ITEM.None;
@@ -307,6 +351,7 @@ public class Youth : Player
                 ReturnKey();
             }
         }
+        */
     }
     #endregion
 }
