@@ -589,9 +589,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: FirePosition
       objectReference: {fileID: 0}
+    - target: {fileID: 101143266330157298, guid: 31710f55ceca657439614a4e42b0c209, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 101143266330157299, guid: 31710f55ceca657439614a4e42b0c209, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 101143266330157299, guid: 31710f55ceca657439614a4e42b0c209, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 101143266330157299, guid: 31710f55ceca657439614a4e42b0c209, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 101143266330157299, guid: 31710f55ceca657439614a4e42b0c209, type: 3}
       propertyPath: m_LocalPosition.x
@@ -635,6 +647,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31710f55ceca657439614a4e42b0c209, type: 3}
+--- !u!1 &5692615732598985504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 101143266330157298, guid: 31710f55ceca657439614a4e42b0c209, type: 3}
+  m_PrefabInstance: {fileID: 5649605868842709970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5970350476731730107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -914,6 +931,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5934346095828939901, guid: 28a0e6bdc7b58cb4eb4fc9554567cc4e, type: 3}
   m_PrefabInstance: {fileID: 7970732008279459337}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7692886298414887142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4379384306054296180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1f8493723879549bec686c4979fa84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_firePlace: {fileID: 5692615732598985504}
+  m_firePrefab: {fileID: 2074766153991075407, guid: 9388e08c02f5dbd4ba25e646e099f41d, type: 3}
+  rayStartTransform: {fileID: 0}
 --- !u!1001 &8305917671320829668
 PrefabInstance:
   m_ObjectHideFlags: 0
