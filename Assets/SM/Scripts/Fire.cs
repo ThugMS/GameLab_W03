@@ -20,10 +20,12 @@ public class Fire : MonoBehaviour
         {
             burnCheck.Burn();
         }
+        /*
         else if(collision.gameObject.layer == 3)
         { 
             this.gameObject.SetActive(false);
         }
+        */
     }
     #endregion
 }

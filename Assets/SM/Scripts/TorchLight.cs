@@ -50,19 +50,14 @@ public class TorchLight : MonoBehaviour
 
             // 레이의 각도를 계산합니다.
             Vector3 hitNormal = hit.normal;
-            /*
-            if (angle >= 100f || angle <= 30f)
-            {
-                Debug.DrawRay(rayStartTransform.position, rayStartTransform.forward * rayRange, Color.red);
-                return;
-            }
-            */
 
-            if (hit.normal.y == 1f)
+            if (hit.normal.y == 1f && rayStartTransform.eulerAngles.x <= 25f)
             {
                 float roundedX = (Mathf.Round(hit.point.x / 5f)) * 5f + 2.5f;
                 float roundedY = (Mathf.Round(hit.point.y / 5f)) * 5f;
                 float roundedZ = (Mathf.Round(hit.point.z / 5f)) * 5f;
+
+                Debug.Log(roundedY);
 
                 m_firePlace.SetActive(true);
                 m_firePlace.transform.position = new Vector3(roundedX, roundedY, roundedZ);
