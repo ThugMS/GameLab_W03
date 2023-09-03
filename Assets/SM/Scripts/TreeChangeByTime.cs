@@ -76,4 +76,4 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
         UpdateTimeState();
     }
     #endregion
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
