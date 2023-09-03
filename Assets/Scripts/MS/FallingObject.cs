@@ -28,8 +28,6 @@ public class FallingObject : TimeInfluenced
     public override void UpdateTimeState()
     {
 
-        Debug.Log("yes");
-
         if (GetObjectTIme() <= 0)
             EnableYoung();
         else if (GetObjectTIme() == 1)
