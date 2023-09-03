@@ -12,6 +12,10 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
     [SerializeField] private Transform m_headTransform;
     [SerializeField] private Transform m_bodyTransform;
     [SerializeField] private Transform m_collisionTransform;
+    [SerializeField] private Color[] m_treeColors;
+    [SerializeField] private Color m_nowColor;
+    [SerializeField] private MaterialPropertyBlock m_mpb;
+    [SerializeField] private Renderer m_renderer;
 
     [Header("Time")]
     [SerializeField] private int m_startTime;
@@ -28,8 +32,23 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
             EnableYoung();
         else if (GetObjectTIme() == 1)
             EnableYouth();
-        else if (GetObjectTIme() >= 2)
+        else if (GetObjectTIme() == 2)
+        {
             EnableElder();
+            StartCoroutine(ChangeColorOverTime(m_treeColors[0], 1f));
+        }
+        else if(GetObjectTIme() == 3)
+        {
+            EnableElder();
+            StartCoroutine(ChangeColorOverTime(m_treeColors[1], 1f));
+        }
+        else if (GetObjectTIme() == 4)
+        {
+            EnableElder();
+            StartCoroutine(ChangeColorOverTime(m_treeColors[2], 1f));
+        }
+
+
     }
     public bool Chop()
     {
@@ -42,7 +61,6 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
 
     public void Burn()
     {
-        // 임시 연소
         transform.parent.gameObject.SetActive(false);
     }
 
@@ -72,8 +90,31 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
 
     private void Start()
     {
+        m_renderer = m_headTransform.GetComponent<Renderer>();
+        m_nowColor = m_treeColors[0];
+        m_mpb = new MaterialPropertyBlock();
         SetStartTime(m_startTime);
         UpdateTimeState();
+
+
+    }
+
+    private IEnumerator ChangeColorOverTime(Color _endColor, float _time)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < _time)
+        {
+            Color lerpedColor = Color.Lerp(m_nowColor, _endColor, elapsedTime / _time);
+            m_mpb.SetColor(Shader.PropertyToID("_Color"), lerpedColor);
+            m_renderer.SetPropertyBlock(m_mpb);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        m_nowColor = _endColor;
+        m_mpb.SetColor(Shader.PropertyToID("_Color"), _endColor);
+        m_renderer.SetPropertyBlock(m_mpb);
     }
     #endregion
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
