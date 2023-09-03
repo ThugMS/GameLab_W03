@@ -9,7 +9,7 @@ public class FallingObject : TimeInfluenced
     #endregion
 
     #region PrivateVariables
-    [SerializeField] private Ease m_ease;
+    [SerializeField] private Ease m_youngEase;
     #endregion
 
     #region PublicMethod
@@ -36,7 +36,7 @@ public class FallingObject : TimeInfluenced
     #region PrivateMethod
     private void EnableYoung()
     {
-        transform.DOMoveY(5f, TimeManager.s_Instance.m_skipTimeLength).SetEase(m_ease);
+        transform.DOMoveY(transform.position.y + 5f, TimeManager.s_Instance.m_skipTimeLength).SetEase(m_youngEase);
         CameraShakeTrigger.instance.ShakeCamera(2, TimeManager.s_Instance.m_skipTimeLength);
     }
 
