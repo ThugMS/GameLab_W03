@@ -330,6 +330,7 @@ public class Player : MonoBehaviour, IBurn
         m_isDead = true;
         m_grabItem = ITEM.None;
         m_animator.SetTrigger("DeadTrigger");
+        m_stopMove = true;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
