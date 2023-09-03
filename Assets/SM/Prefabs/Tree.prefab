@@ -96,7 +96,6 @@ MonoBehaviour:
   m_bodyTransform: {fileID: 3366545091845659743}
   m_collisionTransform: {fileID: 2968689717428244557}
   m_startTime: 1
-  m_moveTime: 0.5
   isChopped: 0
 --- !u!1001 &2968689716639103271
 PrefabInstance:
@@ -190,6 +189,14 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ebede19dadeb69b45af506eb42c77d8f, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ebede19dadeb69b45af506eb42c77d8f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ebede19dadeb69b45af506eb42c77d8f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebede19dadeb69b45af506eb42c77d8f, type: 3}
       propertyPath: m_LocalPosition.x
