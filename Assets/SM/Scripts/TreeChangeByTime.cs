@@ -117,4 +117,4 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
         m_renderer.SetPropertyBlock(m_mpb);
     }
     #endregion
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   

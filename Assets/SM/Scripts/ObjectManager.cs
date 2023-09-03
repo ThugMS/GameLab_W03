@@ -25,8 +25,7 @@ public class ObjectManager : MonoBehaviour
     public List<TimeInfluenced> m_LevelObjects;
 
     public void AddObject(TimeInfluenced _obj)
-    {
-        Debug.Log(_obj.gameObject.name + "ADDOBJ");    
+    {  
         m_LevelObjects.Add(_obj); 
         TimeManager.s_Instance.AddObject(_obj);
     }

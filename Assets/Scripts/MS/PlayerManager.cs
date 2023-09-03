@@ -161,11 +161,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OffSetting<T>(GameObject _obj, T _script) where T : Player
     {
-        
-        if (_script.m_grabItem == ITEM.Key && TimeManager.s_Instance.GetCureentTime() != 0)
-        {
-            m_item = ITEM.Key;
-        }
+        _script.OnChange();
         _obj.SetActive(false);
         _script.enabled = false;
     }
@@ -173,12 +169,8 @@ public class PlayerManager : MonoBehaviour
 
     private void OffSetting<T>(GameObject _obj, T _script, bool _isUp) where T : Player
     {
-
-        if (_script.m_grabItem == ITEM.Key)
-        {
-            m_item = ITEM.Key;
-        }
         _script.m_isUp = _isUp;
+        _script.OnChange();
         _obj.SetActive(false);
         _script.enabled = false;
     }

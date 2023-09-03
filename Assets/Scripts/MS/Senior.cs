@@ -22,20 +22,21 @@ public class Senior : Player
     #endregion
 
     #region PublicMethod
+    public override void ResetSetting()
+    {
+        base.ResetSetting();
+        if (m_grabItem == ITEM.Key)
+        {
+            m_key.SetActive(false);
+            m_grabItem = ITEM.None;
+        }
+    }
     private void OnEnable()
     {
         if (m_grabItem == ITEM.Key)
         {
             m_key.SetActive(true);
         }
-    }
-
-    private void OnDisable()
-    {
-        ResetSetting();
-
-                PlayerManager.instance.SetIsCeiling(m_isCeiling);
-        PlayerManager.instance.SetIsGround(m_isGround);
     }
 
     public void Interact(InputAction.CallbackContext _context)
@@ -138,13 +139,5 @@ public class Senior : Player
         m_grabItem = ITEM.None;
     }
 
-    private void ResetSetting()
-    {
-        if(m_grabItem == ITEM.Key)
-        {
-            m_key.SetActive(false);
-            m_grabItem = ITEM.None;
-        }
-    }
     #endregion
 }

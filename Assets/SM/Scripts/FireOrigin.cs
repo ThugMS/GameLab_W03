@@ -30,15 +30,15 @@ public class FireOrigin : TimeInfluenced
 	#region PublicMethod
 	public override void UpdateTimeState()
 	{
-		Debug.Log(GetObjectTIme());
 		m_Index = GetObjectTIme();
 	}
 	#endregion
 	#region PrivateMethod
-	private void Start()
+	private void OnEnable()
 	{
 		SetStartTime(m_startTime);
 		UpdateTimeState();
+		ObjectManager.s_Instance.AddObject(this);
 	}
 	#endregion
 }
