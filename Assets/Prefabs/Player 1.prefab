@@ -151,6 +151,7 @@ MonoBehaviour:
   m_isUp: 0
   m_stopMove: 0
   m_isDead: 0
+  m_onPanel: 0
   m_isGround: 0
   m_isCeiling: 0
   m_isStucking: 0
@@ -165,7 +166,8 @@ MonoBehaviour:
   m_nextRotation: {x: 0, y: 0, z: 0, w: 1}
   m_rotationLerp: 0.5
   m_rigidbody: {fileID: 3791650346258343624}
-  m_speed: 5
+  m_maxSpeed: 5
+  m_curSpeed: 0
   m_isMove: 0
   m_isJump: 0
   m_lastDir: {x: 0, y: 0}
@@ -173,6 +175,7 @@ MonoBehaviour:
   m_fallStartTime: 0
   m_fallStartYPosition: 0
   m_fallDeathHeight: 8
+  m_animator: {fileID: 1767525485026807340}
   m_jumpPower: 8
   m_gravityValue: 10
   m_isGrab: 0
@@ -185,7 +188,6 @@ MonoBehaviour:
   m_key: {fileID: 8820962927725530506}
   m_keyPrefab: {fileID: 3722240196858008801, guid: 61a9842cb7972954ab2a3ffeeccae8fb, type: 3}
   m_targetDoor: {fileID: 0}
-  m_animator: {fileID: 1767525485026807340}
 --- !u!114 &2240665113309730345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +205,7 @@ MonoBehaviour:
   m_isUp: 0
   m_stopMove: 0
   m_isDead: 0
+  m_onPanel: 0
   m_isGround: 0
   m_isCeiling: 0
   m_isStucking: 0
@@ -217,7 +220,8 @@ MonoBehaviour:
   m_nextRotation: {x: 0, y: 0, z: 0, w: 1}
   m_rotationLerp: 0.5
   m_rigidbody: {fileID: 3791650346258343624}
-  m_speed: 5
+  m_maxSpeed: 5
+  m_curSpeed: 0
   m_isMove: 0
   m_isJump: 0
   m_lastDir: {x: 0, y: 0}
@@ -225,6 +229,7 @@ MonoBehaviour:
   m_fallStartTime: 0
   m_fallStartYPosition: 0
   m_fallDeathHeight: 8
+  m_animator: {fileID: 4825439456075351308}
 --- !u!114 &2075100694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +247,7 @@ MonoBehaviour:
   m_isUp: 0
   m_stopMove: 0
   m_isDead: 0
+  m_onPanel: 0
   m_isGround: 0
   m_isCeiling: 0
   m_isStucking: 0
@@ -256,7 +262,8 @@ MonoBehaviour:
   m_nextRotation: {x: 0, y: 0, z: 0, w: 1}
   m_rotationLerp: 0.5
   m_rigidbody: {fileID: 3791650346258343624}
-  m_speed: 5
+  m_maxSpeed: 5
+  m_curSpeed: 0
   m_isMove: 0
   m_isJump: 0
   m_lastDir: {x: 0, y: 0}
@@ -264,6 +271,7 @@ MonoBehaviour:
   m_fallStartTime: 0
   m_fallStartYPosition: 0
   m_fallDeathHeight: 8
+  m_animator: {fileID: 1799620982149906198}
   m_key: {fileID: 2732425860673358998}
   m_keyPrefab: {fileID: 3722240196858008801, guid: 61a9842cb7972954ab2a3ffeeccae8fb, type: 3}
   m_targetDoor: {fileID: 0}
@@ -272,7 +280,6 @@ MonoBehaviour:
   m_collider: []
   m_boxPosition: {x: 0, y: 0, z: 1}
   m_boxSize: {x: 1.5, y: 2, z: 1.5}
-  m_animator: {fileID: 1799620982149906198}
 --- !u!1001 &1604279185006663799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -373,7 +380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7032172222226647976, guid: 4a08de84e1cea1d45a7cd892945e76f1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7700200764773241106, guid: 4a08de84e1cea1d45a7cd892945e76f1, type: 3}
       propertyPath: m_RootOrder
@@ -393,7 +400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700200764773241106, guid: 4a08de84e1cea1d45a7cd892945e76f1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0032528937
+      value: -0.003252894
       objectReference: {fileID: 0}
     - target: {fileID: 7700200764773241106, guid: 4a08de84e1cea1d45a7cd892945e76f1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -570,7 +577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8298211005487125281, guid: 0ec919cef4c9207489aa46a3a1e2311e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8674771109876091291, guid: 0ec919cef4c9207489aa46a3a1e2311e, type: 3}
       propertyPath: m_RootOrder

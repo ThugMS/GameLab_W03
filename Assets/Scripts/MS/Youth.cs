@@ -40,8 +40,7 @@ public class Youth : Player
     [SerializeField] private Door m_targetDoor;
 
 
-    [Header("Animation")]
-    [SerializeField] private Animator m_animator;
+    
     #endregion
 
     #region PublicMethod

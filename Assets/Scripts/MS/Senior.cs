@@ -19,9 +19,6 @@ public class Senior : Player
     [SerializeField] private Collider[] m_collider;
     [SerializeField] private Vector3 m_boxPosition = new Vector3(0, 0, 1f);
     [SerializeField] private Vector3 m_boxSize = new Vector3(1.5f, 2, 1.5f);
-
-    [Header("Animation")]
-    [SerializeField] private Animator m_animator;
     #endregion
 
     #region PublicMethod

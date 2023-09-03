@@ -52,6 +52,9 @@ public class Player : MonoBehaviour, IBurn
     [SerializeField] private float m_fallStartTime;
     [SerializeField] private float m_fallStartYPosition;
     [SerializeField] private float m_fallDeathHeight = 8f;
+
+    [Header("Animation")]
+    [SerializeField] protected Animator m_animator;
     #endregion
 
     #region PublicMethod
@@ -310,6 +313,7 @@ public class Player : MonoBehaviour, IBurn
     {
         m_isDead = true;
         m_grabItem = ITEM.None;
+        m_animator.SetTrigger("DeadTrigger");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

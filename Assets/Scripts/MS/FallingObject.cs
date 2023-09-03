@@ -50,7 +50,4 @@ public class FallingObject : TimeInfluenced
 
     }
     #endregion
-
-
-
 }
