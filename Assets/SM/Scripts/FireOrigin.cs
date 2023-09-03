@@ -35,10 +35,11 @@ public class FireOrigin : TimeInfluenced
 	}
 	#endregion
 	#region PrivateMethod
-	private void Start()
+	private void OnEnable()
 	{
 		SetStartTime(m_startTime);
 		UpdateTimeState();
+		ObjectManager.s_Instance.AddObject(this);
 	}
 	#endregion
 }
