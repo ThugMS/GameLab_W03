@@ -33,7 +33,7 @@ public class TorchLight : MonoBehaviour
     private void Update()
     {
         // 레이를 생성하고 방향을 설정합니다.
-        float rayRange = 5f;
+        float rayRange = 10f;
         Ray ray = new Ray(rayStartTransform.position, rayStartTransform.forward);
 
         RaycastHit hit;
