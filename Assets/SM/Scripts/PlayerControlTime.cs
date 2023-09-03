@@ -20,10 +20,12 @@ public class PlayerControlTime : MonoBehaviour
 			return;
 		if (context.performed)
 		{
-			isChangingTime = true;
+			
 			int timeCount = TimeManager.s_Instance.m_timeCount;
 			if (timeCount < 1)
 				return;
+
+			isChangingTime = true;
 			TimeManager.s_Instance.MinusTIme();
 			StartCoroutine(nameof(IE_EnableChangingTime));
 		}
@@ -35,10 +37,11 @@ public class PlayerControlTime : MonoBehaviour
 			return;
 		if (context.performed)
 		{
-			isChangingTime = true;
+			
 			int timeCount = TimeManager.s_Instance.m_timeCount;
 			if (timeCount > 1)
 				return;
+			isChangingTime = true;
 			TimeManager.s_Instance.PlusTime();
 			StartCoroutine(nameof(IE_EnableChangingTime));
 		}
@@ -52,5 +55,5 @@ public class PlayerControlTime : MonoBehaviour
 		yield return new WaitForSeconds(TimeManager.s_Instance.m_skipTimeLength);
 		isChangingTime = false;
 	}
-    #endregion
+	#endregion
 }

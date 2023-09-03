@@ -44,8 +44,7 @@ public class Youth : Player
     [SerializeField] private GameObject m_torchPrefab;
 
 
-    [Header("Animation")]
-    [SerializeField] private Animator m_animator;
+    
     #endregion
 
     #region PublicMethod
