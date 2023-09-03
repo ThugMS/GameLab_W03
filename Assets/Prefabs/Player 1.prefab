@@ -175,6 +175,7 @@ MonoBehaviour:
   m_fallStartTime: 0
   m_fallStartYPosition: 0
   m_fallDeathHeight: 8
+  m_animator: {fileID: 1767525485026807340}
   m_jumpPower: 8
   m_gravityValue: 10
   m_isGrab: 0
@@ -189,7 +190,6 @@ MonoBehaviour:
   m_targetDoor: {fileID: 0}
   m_torch: {fileID: 5934346095828939901, guid: 28a0e6bdc7b58cb4eb4fc9554567cc4e, type: 3}
   m_torchPrefab: {fileID: 5934346095828939901, guid: 28a0e6bdc7b58cb4eb4fc9554567cc4e, type: 3}
-  m_animator: {fileID: 1767525485026807340}
 --- !u!114 &2240665113309730345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +231,7 @@ MonoBehaviour:
   m_fallStartTime: 0
   m_fallStartYPosition: 0
   m_fallDeathHeight: 8
+  m_animator: {fileID: 0}
 --- !u!114 &2075100694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +273,7 @@ MonoBehaviour:
   m_fallStartTime: 0
   m_fallStartYPosition: 0
   m_fallDeathHeight: 8
+  m_animator: {fileID: 1799620982149906198}
   m_key: {fileID: 2732425860673358998}
   m_keyPrefab: {fileID: 3722240196858008801, guid: 61a9842cb7972954ab2a3ffeeccae8fb, type: 3}
   m_targetDoor: {fileID: 0}
@@ -280,7 +282,6 @@ MonoBehaviour:
   m_collider: []
   m_boxPosition: {x: 0, y: 0, z: 1}
   m_boxSize: {x: 1.5, y: 2, z: 1.5}
-  m_animator: {fileID: 1799620982149906198}
 --- !u!1001 &1604279185006663799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -478,6 +479,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1072988410152924459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947441777734736445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53970d4c1867faa4f8f88fb0c843edb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5314905827480344939
 PrefabInstance:
   m_ObjectHideFlags: 0

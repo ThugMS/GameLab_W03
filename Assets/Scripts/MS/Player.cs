@@ -313,7 +313,7 @@ public class Player : MonoBehaviour, IBurn
         m_isDead = true;
         m_grabItem = ITEM.None;
         m_animator.SetTrigger("DeadTrigger");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void CheckHead()

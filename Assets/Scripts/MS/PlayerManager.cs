@@ -181,7 +181,6 @@ public class PlayerManager : MonoBehaviour
         _script.m_isUp = _isUp;
         _obj.SetActive(false);
         _script.enabled = false;
-
     }
 
     private IEnumerator IE_StopMove(float _time)
