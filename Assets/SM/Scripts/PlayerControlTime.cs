@@ -11,7 +11,7 @@ public class PlayerControlTime : MonoBehaviour
 	private InputAction inputPlusKey;
 	private InputAction inputMinusKey;
 
-	[SerializeField] private bool isChangingTime = false;
+	private bool isChangingTime = false;
 	#endregion
 	#region PublicMethod
 	public void OnMinusTimeKey(InputAction.CallbackContext context)
@@ -25,9 +25,9 @@ public class PlayerControlTime : MonoBehaviour
 			if (timeCount < 1)
 				return;
 
-            isChangingTime = true;
-            TimeManager.s_Instance.MinusTIme();
-			Invoke(nameof(EnableChangeTime), TimeManager.s_Instance.m_skipTimeLength);
+			isChangingTime = true;
+			TimeManager.s_Instance.MinusTIme();
+			StartCoroutine(nameof(IE_EnableChangingTime));
 		}
 	}
 
@@ -41,23 +41,19 @@ public class PlayerControlTime : MonoBehaviour
 			int timeCount = TimeManager.s_Instance.m_timeCount;
 			if (timeCount > 1)
 				return;
-
-            isChangingTime = true;
-            TimeManager.s_Instance.PlusTime();
-			Invoke(nameof(EnableChangeTime), TimeManager.s_Instance.m_skipTimeLength);
+			isChangingTime = true;
+			TimeManager.s_Instance.PlusTime();
+			StartCoroutine(nameof(IE_EnableChangingTime));
 		}
 	}
 
-    private void Start()
-    {
-		isChangingTime = false;
-    }
 
-    #endregion
-    #region PrivateMethod
-    private void EnableChangeTime()
+	#endregion
+	#region PrivateMethod
+	IEnumerator IE_EnableChangingTime()
 	{
+		yield return new WaitForSeconds(TimeManager.s_Instance.m_skipTimeLength);
 		isChangingTime = false;
 	}
-    #endregion
+	#endregion
 }
