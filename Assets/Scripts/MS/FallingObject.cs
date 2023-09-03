@@ -9,12 +9,27 @@ public class FallingObject : TimeInfluenced
     #endregion
 
     #region PrivateVariables
-    [SerializeField] private Ease m_ease;
+    [SerializeField] private Transform m_start;
+    [SerializeField] private Transform m_end;
+
+    [Header("Transform")]
+    [SerializeField] private Vector3 m_startPos;
+    [SerializeField] private Vector3 m_endPos;
+    [SerializeField] private Ease m_youngEase;
+    [SerializeField] private ShakeRandomnessMode m_youthEase;
+    [SerializeField] private AnimationCurve m_elderEase;
+    [SerializeField] private float m_moveDis = 5f;
+
+    [Header("Time")]
+    [SerializeField] private int m_startTime = 1;
     #endregion
 
     #region PublicMethod
     public override void UpdateTimeState()
     {
+
+        Debug.Log("yes");
+
         if (GetObjectTIme() <= 0)
             EnableYoung();
         else if (GetObjectTIme() == 1)
@@ -31,23 +46,32 @@ public class FallingObject : TimeInfluenced
         }
     }
 
+    private void Start()
+    {
+        m_startPos = m_start.position;
+        m_endPos = m_end.position;
+
+        SetStartTime(m_startTime);
+        UpdateTimeState();
+    }
+
     #endregion
 
     #region PrivateMethod
     private void EnableYoung()
     {
-        transform.DOMoveY(5f, TimeManager.s_Instance.m_skipTimeLength).SetEase(m_ease);
-        CameraShakeTrigger.instance.ShakeCamera(2, TimeManager.s_Instance.m_skipTimeLength);
+        transform.DOMove(m_startPos, TimeManager.s_Instance.m_skipTimeLength).SetEase(m_youngEase);
+        //CameraShakeTrigger.instance.ShakeCamera(2, TimeManager.s_Instance.m_skipTimeLength);
     }
 
     private void EnableYouth()
     {
-
+        
     }
 
     private void EnableElder()
     {
-
+        transform.DOMove(m_endPos, TimeManager.s_Instance.m_skipTimeLength).SetEase(m_elderEase);
     }
     #endregion
 }
