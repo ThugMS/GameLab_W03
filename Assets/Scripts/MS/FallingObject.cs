@@ -9,12 +9,18 @@ public class FallingObject : TimeInfluenced
     #endregion
 
     #region PrivateVariables
+    [Header("Position")]
     [SerializeField] private Transform m_start;
     [SerializeField] private Transform m_end;
+    [SerializeField] private Transform m_startPlayer;
+    [SerializeField] private Transform m_endPlayer;
+    [SerializeField] private float m_offset;
 
     [Header("Transform")]
     [SerializeField] private Vector3 m_startPos;
     [SerializeField] private Vector3 m_endPos;
+    [SerializeField] private Vector3 m_startPosPlayer;
+    [SerializeField] private Vector3 m_endPosPlayer;
     [SerializeField] private Ease m_youngEase;
     [SerializeField] private ShakeRandomnessMode m_youthEase;
     [SerializeField] private AnimationCurve m_elderEase;
@@ -30,7 +36,6 @@ public class FallingObject : TimeInfluenced
     #region PublicMethod
     public override void UpdateTimeState()
     {
-
         if (GetObjectTIme() <= 0)
             EnableYoung();
         else if (GetObjectTIme() == 1)
@@ -49,8 +54,15 @@ public class FallingObject : TimeInfluenced
         m_startPos = m_start.position;
         m_endPos = m_end.position;
 
+        m_startPosPlayer = m_startPlayer.position;
+        m_endPosPlayer = m_endPlayer.position;
+
         SetStartTime(m_startTime);
         UpdateTimeState();
+
+        m_offset = transform.localScale.y * 0.6f;
+        //m_startPosPlayer = new Vector3(m_startPos.x, m_startPos.y + m_offset, m_startPos.z);
+        //m_endPosPlayer = new Vector3(m_endPos.x, m_endPos.y + m_offset, m_endPos.z);
     }
 
     #endregion
@@ -62,7 +74,7 @@ public class FallingObject : TimeInfluenced
 
         if (m_player != null)
         {
-            m_player.transform.DOMove(m_startPos, TimeManager.s_Instance.m_skipTimeLength).SetEase(m_youngEase);
+            m_player.transform.DOMove(m_startPosPlayer, TimeManager.s_Instance.m_skipTimeLength).SetEase(m_youngEase);
             StartCoroutine(nameof(IE_Move), tween);
         }
     }
@@ -78,7 +90,7 @@ public class FallingObject : TimeInfluenced
 
         if (m_player != null)
         {
-            m_player.transform.DOMove(m_endPos, TimeManager.s_Instance.m_skipTimeLength).SetEase(m_elderEase);
+            m_player.transform.DOMove(m_endPosPlayer, TimeManager.s_Instance.m_skipTimeLength).SetEase(m_elderEase);
             StartCoroutine(nameof(IE_Move), tween);
         }
     }
