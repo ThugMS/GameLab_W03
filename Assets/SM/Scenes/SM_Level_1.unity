@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3436386966620749522, guid: ffce3d12ef5419b469f45f9a758abd20, type: 3}
+      propertyPath: m_startTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffce3d12ef5419b469f45f9a758abd20, type: 3}
 --- !u!1001 &110779096
@@ -4067,6 +4071,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 208737134}
     m_Modifications:
+    - target: {fileID: 59322013904898365, guid: dd882a45544a03b4088fef2ef5d8bc09, type: 3}
+      propertyPath: m_startTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1136368089901298081, guid: dd882a45544a03b4088fef2ef5d8bc09, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -4627,6 +4635,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 208737134}
     m_Modifications:
+    - target: {fileID: 59322013904898365, guid: dd882a45544a03b4088fef2ef5d8bc09, type: 3}
+      propertyPath: m_startTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1136368089901298081, guid: dd882a45544a03b4088fef2ef5d8bc09, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4683,6 +4695,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5889703442227541370, guid: dd882a45544a03b4088fef2ef5d8bc09, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c54a5aa9b273c734cb08ea730a9aedc4, type: 2}
+    - target: {fileID: 5889703442227541370, guid: dd882a45544a03b4088fef2ef5d8bc09, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9ac755e23f3b1ea44961e202a2748e78, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd882a45544a03b4088fef2ef5d8bc09, type: 3}
 --- !u!33 &3191215718958834157
