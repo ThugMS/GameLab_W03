@@ -147,7 +147,7 @@ public class Youth : Player
         if(m_collider != null)
         {   
              for(int i=0;i< m_collider.Length;i++)
-            {
+             {
                 if (m_collider[i].tag == "Switch")
                 {
                     m_collider[i].GetComponent<Switch>().TurnSwitch();
@@ -175,7 +175,10 @@ public class Youth : Player
                         m_grabItem = ITEM.Torch;
                         break;
                 }
-            }
+
+                if (m_grabItem != ITEM.None)
+                    break;
+             }
         }
     }
 

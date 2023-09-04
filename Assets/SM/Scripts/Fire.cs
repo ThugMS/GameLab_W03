@@ -28,6 +28,24 @@ public class Fire : MonoBehaviour
             this.gameObject.SetActive(false);
         }
         */
+
+        Youth youth;
+
+        m_collision.gameObject.TryGetComponent(out youth);
+
+        if (youth != null)
+        {
+            youth.Death();
+        }
+
+        Senior player;
+
+        m_collision.gameObject.TryGetComponent(out player);
+
+        if(player != null)
+        {
+            player.Death();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
