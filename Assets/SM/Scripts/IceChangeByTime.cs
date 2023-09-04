@@ -13,18 +13,31 @@ public class IceChangeByTime : TimeInfluenced, IBurn
     [SerializeField] private Transform m_bodyTransform;
     [SerializeField] private Transform m_collisionTransform;
 
+    [Header("Ice Color")]
+    [SerializeField] private Color[] m_iceColors;
+    [SerializeField] private Color m_nowColor;
+    [SerializeField] private MaterialPropertyBlock m_mpb;
+    [SerializeField] private Renderer m_renderer;
+    [SerializeField] private Material m_targetMaterial;
+
     [Header("Time")]
     [SerializeField] private int m_startTime;
+    private int m_objTime;
 
     #endregion
     #region PublicMethod
     public override void UpdateTimeState()
     {
-        if (GetObjectTIme() <= 0)
+        m_objTime = GetObjectTIme();
+
+        if (m_objTime <= 0)
+        {
             EnableYoung();
-        else if (GetObjectTIme() == 1)
+            m_targetMaterial.DOColor(m_iceColors[m_objTime + 2], 1f);
+        }
+        else if (m_objTime == 1)
             EnableYouth();
-        else if (GetObjectTIme() >= 2)
+        else if (m_objTime >= 2)
             EnableElder();
     }
     public void Burn()
@@ -59,10 +72,14 @@ public class IceChangeByTime : TimeInfluenced, IBurn
     }
 
     private void Start()
-    {   
+    {
+        m_renderer = m_bodyTransform.GetComponent<Renderer>();
+        m_nowColor = m_iceColors[0];
+        m_targetMaterial = m_renderer.materials[1];
+        m_mpb = new MaterialPropertyBlock();
         SetStartTime(m_startTime);
         UpdateTimeState();
     }
-#endregion
+    #endregion
 }
 
