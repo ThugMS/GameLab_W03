@@ -16,7 +16,10 @@ public class PlayerControlTime : MonoBehaviour
 	#region PublicMethod
 	public void OnMinusTimeKey(InputAction.CallbackContext context)
 	{
-		if (isChangingTime)
+        if (UIManager.instance.m_isPause == true)
+            return;
+
+        if (isChangingTime)
 			return;
 
 		if(PlayerManager.instance.m_isGround == false)
@@ -38,6 +41,9 @@ public class PlayerControlTime : MonoBehaviour
 
 	public void OnAddTimeKey(InputAction.CallbackContext context)
 	{
+		if (UIManager.instance.m_isPause == true)
+			return;
+
 		if (isChangingTime)
 			return;
 
