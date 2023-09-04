@@ -281,7 +281,7 @@ public class Player : MonoBehaviour, IBurn
     {
         if(m_isCeiling && m_isGround)
         {
-            LoadSceneManager.s_Instance.ChangeScene(SceneManager.GetActiveScene().name);
+            Death();
         }
     }
 
