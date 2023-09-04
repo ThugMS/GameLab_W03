@@ -1684,7 +1684,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 647095401, guid: 9debc1e63f66d134483da33b5cdba2e8, type: 3}
       propertyPath: direction
-      value: End
+      value: Stage4
       objectReference: {fileID: 0}
     - target: {fileID: 1212105418158008, guid: 9debc1e63f66d134483da33b5cdba2e8, type: 3}
       propertyPath: m_Name
