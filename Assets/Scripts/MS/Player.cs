@@ -132,7 +132,7 @@ public class Player : MonoBehaviour, IBurn
 
     protected virtual void Update()
     {
-        Debug.Log(m_isDead);
+
     }
 
     protected virtual void FixedUpdate()
