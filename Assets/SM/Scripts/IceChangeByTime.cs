@@ -30,6 +30,9 @@ public class IceChangeByTime : TimeInfluenced, IBurn
     {
         m_objTime = GetObjectTIme();
 
+        if (!transform.parent.gameObject.activeSelf)
+            return;
+
         if (m_objTime <= 0)
         {
             EnableYoung();

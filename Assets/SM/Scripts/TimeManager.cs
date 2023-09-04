@@ -33,7 +33,8 @@ public class TimeManager : MonoBehaviour
     {
         foreach(TimeInfluenced obj in m_levelObjects)
         {
-            obj.PlusTime();
+            if (obj.enabled == true)
+                obj.PlusTime();
         }
         m_timeCount++;
 
@@ -45,7 +46,8 @@ public class TimeManager : MonoBehaviour
     {
         foreach (TimeInfluenced obj in m_levelObjects)
         {
-            obj.MinusTime();
+            if (obj.enabled == true)
+                obj.MinusTime();
         }
         m_timeCount--;
 

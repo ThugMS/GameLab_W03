@@ -54,6 +54,7 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
 
     public void Burn()
     {
+        isChopped = true;
         transform.parent.gameObject.SetActive(false);
     }
 
