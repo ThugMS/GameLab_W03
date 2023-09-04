@@ -318,7 +318,7 @@ public class Player : MonoBehaviour, IBurn
     {
         while (m_isFalling)
         {
-            if (Time.time - m_fallStartTime >= 3f)
+            if (Time.time - m_fallStartTime >= 1.5f)
             {
                 Death();
                 break;
