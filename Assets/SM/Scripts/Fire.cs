@@ -7,20 +7,21 @@ public class Fire : MonoBehaviour
     #region PublicVariables
     #endregion
     #region PrivateVariables
+    private Collision m_collision;
     #endregion
     #region PublicMethod
 
     #endregion
     #region PrivateMethod
-    private void OnCollisionEnter(Collision m_collision)
+    private void OnCollisionEnter(Collision _collision)
     {
-        //IBurn burnCheck;
-        //m_collision.gameObject.TryGetComponent(out burnCheck);
-        //if (burnCheck != null)
-        //{
-        //    burnCheck.Burn();
-        //}
-
+        IBurn burnCheck;
+        m_collision = _collision;
+        _collision.gameObject.TryGetComponent(out burnCheck);
+        if (burnCheck != null)
+        {
+            burnCheck.Burn();
+        }
         /*
         else if(collision.gameObject.layer == 3)
         { 
@@ -45,6 +46,17 @@ public class Fire : MonoBehaviour
         {
             player.Death();
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        m_collision = null;
+    }
+
+    private void Update()
+    {
+        if (m_collision == null)
+            gameObject.SetActive(false);
     }
     #endregion
 }
