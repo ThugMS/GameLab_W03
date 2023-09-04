@@ -38,7 +38,6 @@ public class FireOrigin : TimeInfluenced
 	{
 		SetStartTime(m_startTime);
 		UpdateTimeState();
-		ObjectManager.s_Instance.AddObject(this);
 	}
 	#endregion
 }

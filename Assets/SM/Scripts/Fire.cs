@@ -12,10 +12,10 @@ public class Fire : MonoBehaviour
 
     #endregion
     #region PrivateMethod
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision m_collision)
     {
         IBurn burnCheck;
-        collision.gameObject.TryGetComponent(out burnCheck);
+        m_collision.gameObject.TryGetComponent(out burnCheck);
         if (burnCheck != null)
         {
             burnCheck.Burn();
