@@ -168,9 +168,9 @@ public class Player : MonoBehaviour, IBurn
             {
                 angles.x = 340;
             }
-            else if (angle < 180 && angle > 40)
+            else if (angle < 180 && angle > 60)
             {
-                angles.x = 40;
+                angles.x = 60;
             }
 
            m_followTransform.transform.localEulerAngles = angles;
