@@ -12,6 +12,8 @@ public class FallingObject : TimeInfluenced
     [Header("Position")]
     [SerializeField] private Transform m_start;
     [SerializeField] private Transform m_end;
+    [SerializeField] private Transform m_startPlayer;
+    [SerializeField] private Transform m_endPlayer;
     [SerializeField] private float m_offset;
 
     [Header("Transform")]
@@ -52,12 +54,15 @@ public class FallingObject : TimeInfluenced
         m_startPos = m_start.position;
         m_endPos = m_end.position;
 
+        m_startPosPlayer = m_startPlayer.position;
+        m_endPosPlayer = m_endPlayer.position;
+
         SetStartTime(m_startTime);
         UpdateTimeState();
 
         m_offset = transform.localScale.y * 0.6f;
-        m_startPosPlayer = new Vector3(m_startPos.x, m_startPos.y + m_offset, m_startPos.z);
-        m_endPosPlayer = new Vector3(m_endPos.x, m_endPos.y + m_offset, m_endPos.z);
+        //m_startPosPlayer = new Vector3(m_startPos.x, m_startPos.y + m_offset, m_startPos.z);
+        //m_endPosPlayer = new Vector3(m_endPos.x, m_endPos.y + m_offset, m_endPos.z);
     }
 
     #endregion
