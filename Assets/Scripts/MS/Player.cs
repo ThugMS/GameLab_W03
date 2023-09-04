@@ -270,6 +270,7 @@ public class Player : MonoBehaviour, IBurn
         {   
 
             m_isGround = true;
+            PlayerManager.instance.SetIsGround(m_isGround);
             m_isJump = false;
         }
         else
@@ -356,6 +357,7 @@ public class Player : MonoBehaviour, IBurn
         yield return new WaitForSeconds(0.2f);
 
         m_isGround = false;
+        PlayerManager.instance.SetIsGround(m_isGround);
         m_isJump = true;
     }
     #endregion
