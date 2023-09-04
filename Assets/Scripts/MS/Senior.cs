@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,6 +23,8 @@ public class Senior : Player
     #endregion
 
     #region PublicMethod
+    
+
     public override void ResetSetting()
     {
         base.ResetSetting();

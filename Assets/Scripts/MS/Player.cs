@@ -59,9 +59,11 @@ public class Player : MonoBehaviour, IBurn
 
     #region PublicMethod
 
-
     public void Burn()
     {
+        //if (m_isDead == true)
+        //    return;
+
         Death();
     }
 
@@ -130,7 +132,7 @@ public class Player : MonoBehaviour, IBurn
 
     protected virtual void Update()
     {
-        
+        Debug.Log(m_isDead);
     }
 
     protected virtual void FixedUpdate()
@@ -281,7 +283,7 @@ public class Player : MonoBehaviour, IBurn
     {
         if(m_isCeiling && m_isGround)
         {
-            LoadSceneManager.s_Instance.ChangeScene(SceneManager.GetActiveScene().name);
+            Death();
         }
     }
 
@@ -325,9 +327,10 @@ public class Player : MonoBehaviour, IBurn
         }
     }
 
-    private void Death()
+    public void Death()
     {
         m_isDead = true;
+        Debug.Log(m_animator.gameObject.name);
         m_grabItem = ITEM.None;
         m_animator.SetTrigger("DeadTrigger");
         m_stopMove = true;

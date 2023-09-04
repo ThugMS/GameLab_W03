@@ -38,14 +38,11 @@ public class FallingObject : TimeInfluenced
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            EnableYoung();
-        }
     }
 
-    private void Start()
-    {
+    public override void Start()
+    {   
+        base.Start();
         m_startPos = m_start.position;
         m_endPos = m_end.position;
 

@@ -1649,7 +1649,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7978218958883572169}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658565536841479806}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 031021c424416a64eaecd5c697e1f613, type: 3}
   m_Name: 
@@ -2194,7 +2194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5838816434068830358, guid: 9d7558bf9e32e364d9fcaf522200a475, type: 3}
       propertyPath: m_timeCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5838816434068830359, guid: 9d7558bf9e32e364d9fcaf522200a475, type: 3}
       propertyPath: m_RootOrder
@@ -2334,6 +2334,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2075100694, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2075100694, guid: 18a7f923a68efd6428bea761e44859fe, type: 3}
       propertyPath: m_followTransform
       value: 
