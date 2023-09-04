@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class TitleCanvas : MonoBehaviour
@@ -13,6 +14,7 @@ public class TitleCanvas : MonoBehaviour
     private void Awake()
     {
         Screen.SetResolution(1920, 1080, true);
+        Cursor.visible = true;
     }
     public void gameStart(int index)
     {
