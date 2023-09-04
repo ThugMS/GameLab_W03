@@ -23,6 +23,7 @@ public class ConnectedUpBlock : MonoBehaviour, ISwitchConnectedObjects
 			return;
 		m_isActed = true;
 		transform.DOLocalMoveY(transform.localPosition.y + m_offset, TimeManager.s_Instance.m_skipTimeLength);
+		CameraShakeTrigger.instance.ShakeCamera(2, 1f);
 	}
 	#endregion
 	#region PrivateMethod
