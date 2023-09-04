@@ -46,5 +46,12 @@ public abstract class TimeInfluenced : MonoBehaviour
     #region PublicMethod
     #endregion
     #region PrivateMethod
+
+    public virtual void Start()
+    {
+		ObjectManager.s_Instance.AddObject(this);
+
+    }
     #endregion
 }
+

@@ -63,11 +63,6 @@ public class TimeManager : MonoBehaviour
         m_levelObjects.Remove(_obj);
     }
 
-    public void GetObjects(List<TimeInfluenced> _objects)
-    {
-        m_levelObjects = _objects;
-    }
-
     public int GetCureentTime()
     {
         return m_timeCount;
