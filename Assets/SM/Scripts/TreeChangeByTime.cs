@@ -12,6 +12,8 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
     [SerializeField] private Transform m_headTransform;
     [SerializeField] private Transform m_bodyTransform;
     [SerializeField] private Transform m_collisionTransform;
+
+    [Header("Tree Color")]
     [SerializeField] private Color[] m_treeColors;
     [SerializeField] private Color m_nowColor;
     [SerializeField] private MaterialPropertyBlock m_mpb;
@@ -19,6 +21,7 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
 
     [Header("Time")]
     [SerializeField] private int m_startTime;
+    private int m_objTime;
 
     [Header("IsChopped")]
     [SerializeField] private bool isChopped = false;
@@ -26,29 +29,19 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
     #region PublicMethod
     public override void UpdateTimeState()
     {
+        m_objTime = GetObjectTIme();
+
         if (isChopped)
             return;
-        if (GetObjectTIme() <= 0)
+        if (m_objTime <= 0)
             EnableYoung();
-        else if (GetObjectTIme() == 1)
+        else if (m_objTime == 1)
             EnableYouth();
-        else if (GetObjectTIme() == 2)
+        else if (m_objTime >= 2)
         {
             EnableElder();
-            StartCoroutine(ChangeColorOverTime(m_treeColors[0], 1f));
+            StartCoroutine(ChangeColorOverTime(m_treeColors[m_objTime - 2], 1f));
         }
-        else if(GetObjectTIme() == 3)
-        {
-            EnableElder();
-            StartCoroutine(ChangeColorOverTime(m_treeColors[1], 1f));
-        }
-        else if (GetObjectTIme() == 4)
-        {
-            EnableElder();
-            StartCoroutine(ChangeColorOverTime(m_treeColors[2], 1f));
-        }
-
-
     }
     public bool Chop()
     {
@@ -95,8 +88,6 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
         m_mpb = new MaterialPropertyBlock();
         SetStartTime(m_startTime);
         UpdateTimeState();
-
-
     }
 
     private IEnumerator ChangeColorOverTime(Color _endColor, float _time)
