@@ -8,11 +8,13 @@ public class UIManager : MonoBehaviour
 {
     #region PublicVariables
     public static UIManager instance;
+
+    public bool m_isPause = false;
     #endregion
 
     #region PrivateVariables
     [SerializeField] private GameObject m_panel;
-    [SerializeField] private bool m_isPause = false;
+    
     #endregion
 
     #region PublicMethod
