@@ -57,8 +57,6 @@ public class TorchLight : MonoBehaviour
                 float roundedY = (Mathf.Round(hit.point.y / 5f)) * 5f;
                 float roundedZ = (Mathf.Round(hit.point.z / 5f)) * 5f + 2.5f;
 
-                Debug.Log(roundedY);
-
                 m_firePlace.SetActive(true);
                 m_firePlace.transform.position = new Vector3(roundedX, roundedY, roundedZ);
                 m_firePlace.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
