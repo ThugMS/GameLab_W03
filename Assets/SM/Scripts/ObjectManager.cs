@@ -52,7 +52,6 @@ public class ObjectManager : MonoBehaviour
 
     private void Start()
     {
-        TimeManager.s_Instance.GetObjects(m_LevelObjects.ToList());
     }
     #endregion
 }

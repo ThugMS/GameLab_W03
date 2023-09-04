@@ -71,8 +71,9 @@ public class IceChangeByTime : TimeInfluenced, IBurn
         m_collisionTransform.DOScaleY(5f, TimeManager.s_Instance.m_skipTimeLength);
     }
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         m_renderer = m_bodyTransform.GetComponent<Renderer>();
         m_nowColor = m_iceColors[0];
         m_targetMaterial = m_renderer.materials[1];

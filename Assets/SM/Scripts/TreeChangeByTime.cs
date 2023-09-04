@@ -81,8 +81,9 @@ public class TreeChangeByTime : TimeInfluenced, IBurn
         m_collisionTransform.DOLocalMove(new Vector3(0f, 4.5f, 0f), TimeManager.s_Instance.m_skipTimeLength);
     }
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         m_renderer = m_headTransform.GetComponent<Renderer>();
         m_nowColor = m_treeColors[0];
         m_mpb = new MaterialPropertyBlock();
