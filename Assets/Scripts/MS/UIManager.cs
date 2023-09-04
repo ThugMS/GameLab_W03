@@ -28,12 +28,13 @@ public class UIManager : MonoBehaviour
     {
         if(m_isPause == true) 
         {
-
             PlayerManager.instance.SetOnPanel();
+            Cursor.visible = true;
         }
         else
         {
             PlayerManager.instance.SetOffPanel();
+            Cursor.visible = false;
         }
     }
 
