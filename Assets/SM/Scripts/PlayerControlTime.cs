@@ -18,9 +18,14 @@ public class PlayerControlTime : MonoBehaviour
 	{
 		if (isChangingTime)
 			return;
+
+		if(PlayerManager.instance.m_isGround == false)
+		{
+			return;
+		}
+
 		if (context.performed)
 		{
-			
 			int timeCount = TimeManager.s_Instance.m_timeCount;
 			if (timeCount < 1)
 				return;
@@ -35,7 +40,13 @@ public class PlayerControlTime : MonoBehaviour
 	{
 		if (isChangingTime)
 			return;
-		if (context.performed)
+
+        if (PlayerManager.instance.m_isGround == false)
+        {
+            return;
+        }
+
+        if (context.performed)
 		{
 			
 			int timeCount = TimeManager.s_Instance.m_timeCount;
