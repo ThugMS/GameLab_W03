@@ -51,7 +51,7 @@ public class TorchLight : MonoBehaviour
             // 레이의 각도를 계산합니다.
             Vector3 hitNormal = hit.normal;
 
-            if (hit.normal.y == 1f && rayStartTransform.eulerAngles.x <= 30f)
+            if (hit.normal.y == 1f && rayStartTransform.eulerAngles.x <= 35f)
             {
                 float roundedX = (Mathf.Round(hit.point.x / 5f)) * 5f + 2.5f;
                 float roundedY = (Mathf.Round(hit.point.y / 5f)) * 5f;
